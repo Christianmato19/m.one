@@ -1,0 +1,1464 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>m.one — Estrategia primero</title>
+    <meta name="description" content="Marca, marketing y posicionamiento. Estrategia primero. m.one.">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter+Tight:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,400;1,500;1,600;1,700&family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+
+        :root {
+            --cream: #F4EFE6;
+            --cream-soft: #EDE5D4;
+            --cream-deep: #E0D5BE;
+            --black: #1A1714;
+            --black-soft: #2A2520;
+            --terracotta: #B15B20;
+            --terracotta-light: #D4763A;
+            --terracotta-dark: #8A4418;
+            --warm-gray: #6A5F52;
+            --warm-gray-soft: #9A8E7E;
+            --border-soft: rgba(26, 23, 20, 0.08);
+            --border: rgba(26, 23, 20, 0.15);
+            --border-strong: rgba(26, 23, 20, 0.25);
+        }
+
+        html { scroll-behavior: smooth; -webkit-font-smoothing: antialiased; -moz-osx-font-smoothing: grayscale; }
+
+        body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+            background: var(--cream);
+            color: var(--black);
+            font-weight: 400;
+            line-height: 1.5;
+            overflow-x: hidden;
+        }
+
+        ::selection { background: var(--terracotta); color: var(--cream); }
+
+        body::before {
+            content: '';
+            position: fixed;
+            inset: 0;
+            pointer-events: none;
+            z-index: 9999;
+            opacity: 0.035;
+            background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='3'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+        }
+
+        /* NAV */
+        .nav {
+            position: fixed;
+            top: 1.25rem;
+            left: 50%;
+            transform: translateX(-50%);
+            padding: 0.5rem 0.5rem 0.5rem 1.25rem;
+            background: rgba(244, 239, 230, 0.85);
+            backdrop-filter: blur(24px) saturate(180%);
+            -webkit-backdrop-filter: blur(24px) saturate(180%);
+            border: 1px solid var(--border);
+            border-radius: 100px;
+            z-index: 1000;
+            display: flex;
+            align-items: center;
+            gap: 2.5rem;
+        }
+
+        .nav-logo { display: flex; align-items: center; gap: 0.625rem; text-decoration: none; color: var(--black); }
+        .nav-logo img { height: 22px; width: auto; }
+        .nav-logo-mark { font-family: 'JetBrains Mono', monospace; font-size: 0.7rem; color: var(--warm-gray); text-transform: uppercase; letter-spacing: 0.08em; }
+        .nav-links { display: flex; gap: 1.75rem; align-items: center; }
+        .nav-link { font-family: 'JetBrains Mono', monospace; font-size: 0.65rem; color: var(--warm-gray); text-decoration: none; text-transform: uppercase; letter-spacing: 0.08em; transition: color 0.2s; }
+        .nav-link:hover { color: var(--black); }
+        .nav-cta {
+            font-family: 'Inter Tight', sans-serif;
+            font-weight: 600;
+            font-size: 0.8125rem;
+            background: var(--terracotta);
+            color: var(--cream);
+            padding: 0.625rem 1rem;
+            border-radius: 100px;
+            text-decoration: none;
+            letter-spacing: -0.01em;
+            transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+        .nav-cta:hover { background: var(--terracotta-light); transform: translateY(-1px); }
+        @media (max-width: 900px) { .nav { gap: 1rem; padding: 0.5rem 0.5rem 0.5rem 1rem; } .nav-links { display: none; } }
+
+        .container { max-width: 1320px; margin: 0 auto; padding: 0 2.5rem; }
+        @media (max-width: 768px) { .container { padding: 0 1.25rem; } }
+
+        /* HERO */
+        .hero {
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            padding: 9rem 0 4rem;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero-grid {
+            display: grid;
+            grid-template-columns: 1.4fr 1fr;
+            gap: 4rem;
+            width: 100%;
+            align-items: center;
+        }
+
+        @media (max-width: 900px) {
+            .hero-grid { grid-template-columns: 1fr; gap: 3rem; }
+        }
+
+        .hero-content { display: flex; flex-direction: column; gap: 2rem; }
+
+        .hero-meta {
+            display: flex;
+            gap: 2.5rem;
+            flex-wrap: wrap;
+            padding-bottom: 1.5rem;
+            border-bottom: 1px solid var(--border);
+        }
+        .hero-meta-item { display: flex; flex-direction: column; gap: 0.25rem; }
+        .hero-meta-label { font-family: 'JetBrains Mono', monospace; font-size: 0.65rem; color: var(--warm-gray-soft); text-transform: uppercase; letter-spacing: 0.08em; }
+        .hero-meta-value { font-family: 'Inter Tight', sans-serif; font-weight: 500; font-size: 0.875rem; color: var(--black); letter-spacing: -0.01em; }
+
+        .hero-status {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            padding: 0.5rem 0.875rem;
+            background: rgba(26, 23, 20, 0.04);
+            border: 1px solid var(--border);
+            border-radius: 100px;
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 0.65rem;
+            text-transform: uppercase;
+            letter-spacing: 0.08em;
+            color: var(--warm-gray);
+            align-self: flex-start;
+        }
+
+        .status-dot {
+            width: 6px;
+            height: 6px;
+            background: #4A8B3F;
+            border-radius: 50%;
+            box-shadow: 0 0 0 0 rgba(74, 139, 63, 0.4);
+            animation: pulse 2s infinite;
+        }
+
+        @keyframes pulse {
+            0% { box-shadow: 0 0 0 0 rgba(74, 139, 63, 0.4); }
+            70% { box-shadow: 0 0 0 6px rgba(74, 139, 63, 0); }
+            100% { box-shadow: 0 0 0 0 rgba(74, 139, 63, 0); }
+        }
+
+        .hero-title {
+            font-family: 'Inter Tight', sans-serif;
+            font-weight: 800;
+            font-size: clamp(3rem, 8.5vw, 7.5rem);
+            line-height: 0.94;
+            letter-spacing: -0.045em;
+            color: var(--black);
+        }
+
+        .hero-title em {
+            font-style: italic;
+            color: var(--terracotta);
+            font-weight: 700;
+            position: relative;
+            display: inline-block;
+        }
+
+        .hero-title em::after {
+            content: '';
+            position: absolute;
+            bottom: 0.06em;
+            left: 0;
+            right: 0;
+            height: 0.05em;
+            background: var(--terracotta);
+            transform-origin: left;
+            animation: drawLine 1s cubic-bezier(0.16, 1, 0.3, 1) 1.2s both;
+        }
+
+        @keyframes drawLine { from { transform: scaleX(0); } to { transform: scaleX(1); } }
+
+        .hero-description {
+            font-size: clamp(1rem, 1.3vw, 1.1875rem);
+            line-height: 1.55;
+            color: var(--warm-gray);
+            font-weight: 400;
+            max-width: 540px;
+        }
+
+        .hero-description strong { color: var(--black); font-weight: 500; }
+
+        .hero-cta-row { display: flex; gap: 1.5rem; align-items: center; flex-wrap: wrap; }
+
+        .btn-primary {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.625rem;
+            background: var(--terracotta);
+            color: var(--cream);
+            font-family: 'Inter Tight', sans-serif;
+            font-weight: 600;
+            font-size: 0.9375rem;
+            letter-spacing: -0.01em;
+            padding: 1rem 1.5rem;
+            border-radius: 100px;
+            text-decoration: none;
+            border: none;
+            cursor: pointer;
+            transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+        .btn-primary:hover { background: var(--terracotta-light); transform: translateY(-2px); box-shadow: 0 12px 32px -8px rgba(177, 91, 32, 0.3); }
+
+        .btn-secondary {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            background: transparent;
+            color: var(--warm-gray);
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 0.7rem;
+            text-transform: uppercase;
+            letter-spacing: 0.08em;
+            text-decoration: none;
+            transition: color 0.2s;
+        }
+        .btn-secondary:hover { color: var(--black); }
+        .arrow-icon { width: 14px; height: 14px; transition: transform 0.3s; }
+        .btn-primary:hover .arrow-icon, .btn-secondary:hover .arrow-icon { transform: translateX(3px); }
+
+        /* Hero visual — terracotta square with logo */
+        .hero-visual {
+            background: var(--terracotta);
+            aspect-ratio: 1;
+            border-radius: 4px;
+            position: relative;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            overflow: hidden;
+        }
+        .hero-visual::before {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background: radial-gradient(circle at 25% 15%, rgba(255,255,255,0.18) 0%, transparent 55%);
+            pointer-events: none;
+        }
+        .hero-visual img { width: 55%; max-width: 280px; height: auto; position: relative; z-index: 1; }
+
+        .hero-visual-corner {
+            position: absolute;
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 0.65rem;
+            color: rgba(244, 239, 230, 0.7);
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+        }
+        .hero-visual-corner.tl { top: 1.25rem; left: 1.25rem; }
+        .hero-visual-corner.tr { top: 1.25rem; right: 1.25rem; }
+        .hero-visual-corner.bl { bottom: 1.25rem; left: 1.25rem; }
+        .hero-visual-corner.br { bottom: 1.25rem; right: 1.25rem; }
+
+        /* MARQUEE */
+        .marquee {
+            background: var(--cream-deep);
+            border-top: 1px solid var(--border);
+            border-bottom: 1px solid var(--border);
+            overflow: hidden;
+            padding: 1.5rem 0;
+        }
+        .marquee-track {
+            display: flex;
+            gap: 4rem;
+            white-space: nowrap;
+            animation: marquee 38s linear infinite;
+            width: max-content;
+        }
+        .marquee-item {
+            display: flex;
+            align-items: center;
+            gap: 4rem;
+            font-family: 'Inter Tight', sans-serif;
+            font-weight: 500;
+            font-size: clamp(1.125rem, 1.5vw, 1.5rem);
+            letter-spacing: -0.01em;
+            color: var(--black);
+        }
+        .marquee-item span { display: inline-flex; align-items: center; gap: 4rem; }
+        .marquee-dot { width: 6px; height: 6px; background: var(--terracotta); border-radius: 50%; flex-shrink: 0; }
+        .marquee-em { font-style: italic; color: var(--terracotta); font-weight: 600; }
+        @keyframes marquee {
+            from { transform: translateX(0); }
+            to { transform: translateX(-50%); }
+        }
+
+        /* SECTIONS */
+        .section { padding: 9rem 0; position: relative; }
+        @media (max-width: 768px) { .section { padding: 5.5rem 0; } }
+
+        .section-eyebrow-row {
+            display: flex;
+            justify-content: space-between;
+            align-items: baseline;
+            padding-bottom: 2rem;
+            margin-bottom: 5rem;
+            flex-wrap: wrap;
+            gap: 1rem;
+            border-bottom: 1px solid var(--border);
+        }
+        .section-tag {
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 0.7rem;
+            text-transform: uppercase;
+            letter-spacing: 0.08em;
+            color: var(--warm-gray);
+            display: flex;
+            align-items: center;
+            gap: 0.625rem;
+        }
+        .section-tag::before { content: ''; width: 6px; height: 6px; background: var(--terracotta); border-radius: 50%; }
+        .section-tag-right {
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 0.65rem;
+            color: var(--warm-gray-soft);
+            text-transform: uppercase;
+            letter-spacing: 0.08em;
+        }
+
+        @media (max-width: 768px) { .section-eyebrow-row { margin-bottom: 3rem; } }
+
+        /* IDENTITY GRID */
+        .identity-intro {
+            font-family: 'Inter Tight', sans-serif;
+            font-weight: 700;
+            font-size: clamp(2rem, 4.5vw, 4rem);
+            line-height: 1.05;
+            letter-spacing: -0.04em;
+            color: var(--black);
+            max-width: 22ch;
+            margin-bottom: 5rem;
+        }
+        .identity-intro em { font-style: italic; color: var(--terracotta); font-weight: 600; }
+
+        .identity-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 1.25rem;
+        }
+        @media (max-width: 768px) { .identity-grid { grid-template-columns: 1fr; } }
+
+        .identity-cell {
+            aspect-ratio: 1;
+            border-radius: 4px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 4rem;
+            position: relative;
+            overflow: hidden;
+            transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+        .identity-cell:hover { transform: translateY(-4px); }
+        .identity-cell img {
+            width: 50%;
+            max-width: 220px;
+            height: auto;
+            position: relative;
+            z-index: 1;
+            transition: transform 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+        .identity-cell:hover img { transform: scale(1.04); }
+
+        .identity-cell-1 { background: var(--black); }
+        .identity-cell-2 { background: var(--cream-deep); border: 1px solid var(--border); }
+        .identity-cell-3 { background: var(--terracotta); }
+        .identity-cell-4 { background: var(--cream-soft); border: 1px solid var(--border); }
+
+        .identity-cell-1::before, .identity-cell-3::before {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background: radial-gradient(circle at 25% 15%, rgba(255,255,255,0.12) 0%, transparent 55%);
+            pointer-events: none;
+        }
+
+        .identity-label {
+            position: absolute;
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 0.65rem;
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+            z-index: 2;
+        }
+        .identity-label.tl { top: 1.25rem; left: 1.25rem; }
+        .identity-label.tr { top: 1.25rem; right: 1.25rem; }
+        .identity-cell-1 .identity-label { color: rgba(244, 239, 230, 0.5); }
+        .identity-cell-3 .identity-label { color: rgba(244, 239, 230, 0.7); }
+        .identity-cell-2 .identity-label, .identity-cell-4 .identity-label { color: var(--warm-gray); }
+
+        @media (max-width: 768px) {
+            .identity-cell { padding: 2.5rem; }
+        }
+
+        /* IDENTITY GRID END */
+
+        /* PHILOSOPHY — vertical list with huge numerals */
+        .philosophy-intro {
+            font-family: 'Inter Tight', sans-serif;
+            font-weight: 700;
+            font-size: clamp(2.25rem, 5vw, 4.5rem);
+            line-height: 1.05;
+            letter-spacing: -0.04em;
+            color: var(--black);
+            max-width: 22ch;
+            margin-bottom: 6rem;
+        }
+        .philosophy-intro em { font-style: italic; color: var(--terracotta); font-weight: 600; }
+        .philosophy-intro .strike { color: rgba(26, 23, 20, 0.25); text-decoration: line-through; text-decoration-thickness: 3px; text-decoration-color: rgba(26, 23, 20, 0.25); }
+
+        .principles {
+            display: flex;
+            flex-direction: column;
+            border-top: 1px solid var(--border);
+        }
+
+        .principle {
+            display: grid;
+            grid-template-columns: 1fr 2.4fr;
+            gap: 4rem;
+            padding: 4rem 0;
+            border-bottom: 1px solid var(--border);
+            align-items: start;
+            transition: padding-left 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+
+        .principle:hover { padding-left: 1.5rem; }
+
+        .principle-num {
+            font-family: 'Inter Tight', sans-serif;
+            font-size: clamp(4rem, 7vw, 7rem);
+            font-weight: 700;
+            letter-spacing: -0.05em;
+            line-height: 0.85;
+            color: var(--terracotta);
+        }
+
+        .principle-num em {
+            font-style: italic;
+            font-weight: 500;
+        }
+
+        .principle-content { display: flex; flex-direction: column; gap: 1.25rem; max-width: 640px; padding-top: 0.5rem; }
+
+        .principle-title {
+            font-family: 'Inter Tight', sans-serif;
+            font-weight: 700;
+            font-size: clamp(1.5rem, 2.5vw, 2.25rem);
+            letter-spacing: -0.03em;
+            color: var(--black);
+            line-height: 1.05;
+        }
+
+        .principle-title em { font-style: italic; color: var(--terracotta); }
+
+        .principle-text {
+            font-size: 1.0625rem;
+            line-height: 1.6;
+            color: var(--warm-gray);
+        }
+
+        @media (max-width: 768px) {
+            .principle { grid-template-columns: 1fr; gap: 1.5rem; padding: 2.5rem 0; }
+            .principle:hover { padding-left: 0; }
+        }
+
+        /* MANIFESTO BAND — full-bleed terracotta */
+        .manifesto-band {
+            background: var(--terracotta);
+            color: var(--cream);
+            padding: 8rem 0;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+        .manifesto-band::before {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background: radial-gradient(circle at 20% 30%, rgba(255,255,255,0.1) 0%, transparent 50%);
+        }
+        .manifesto-quote {
+            font-family: 'Inter Tight', sans-serif;
+            font-weight: 600;
+            font-style: italic;
+            font-size: clamp(2rem, 5vw, 4.5rem);
+            line-height: 1.05;
+            letter-spacing: -0.035em;
+            max-width: 22ch;
+            margin: 0 auto;
+            position: relative;
+            z-index: 1;
+        }
+        .manifesto-eyebrow {
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 0.7rem;
+            color: rgba(244, 239, 230, 0.7);
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+            margin-bottom: 2.5rem;
+            position: relative;
+            z-index: 1;
+            display: inline-flex;
+            align-items: center;
+            gap: 0.625rem;
+        }
+        .manifesto-eyebrow::before, .manifesto-eyebrow::after {
+            content: '';
+            width: 24px;
+            height: 1px;
+            background: rgba(244, 239, 230, 0.4);
+        }
+
+        /* METHOD — 4 rows with hover padding-shift */
+        .method-intro {
+            font-family: 'Inter Tight', sans-serif;
+            font-weight: 700;
+            font-size: clamp(2rem, 4.5vw, 4rem);
+            line-height: 1.05;
+            letter-spacing: -0.04em;
+            color: var(--black);
+            max-width: 22ch;
+            margin-bottom: 5rem;
+        }
+        .method-intro em { font-style: italic; color: var(--terracotta); font-weight: 600; }
+
+        .method-list {
+            display: flex;
+            flex-direction: column;
+            border-top: 1px solid var(--border);
+        }
+
+        .method-row {
+            padding: 3rem 0;
+            border-bottom: 1px solid var(--border);
+            display: grid;
+            grid-template-columns: 100px 220px 1fr;
+            gap: 3rem;
+            align-items: start;
+            transition: padding-left 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+            cursor: default;
+        }
+
+        .method-row:hover { padding-left: 1.5rem; }
+
+        .method-num {
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 0.7rem;
+            color: var(--terracotta);
+            text-transform: uppercase;
+            letter-spacing: 0.08em;
+            padding-top: 0.5rem;
+        }
+
+        .method-step {
+            font-family: 'Inter Tight', sans-serif;
+            font-weight: 700;
+            font-style: italic;
+            font-size: clamp(1.5rem, 2.4vw, 2rem);
+            letter-spacing: -0.02em;
+            color: var(--black);
+            line-height: 1;
+        }
+
+        .method-text {
+            font-size: 1.0625rem;
+            line-height: 1.6;
+            color: var(--warm-gray);
+            max-width: 580px;
+        }
+
+        @media (max-width: 768px) {
+            .method-row { grid-template-columns: 1fr; gap: 1rem; padding: 2rem 0; }
+            .method-row:hover { padding-left: 0; }
+        }
+
+        /* ABOUT — black section */
+        .about-section {
+            background: var(--black);
+            color: var(--cream);
+            padding: 9rem 0;
+            position: relative;
+            overflow: hidden;
+        }
+        .about-section .section-tag { color: var(--warm-gray-soft); }
+        .about-section .section-tag-right { color: var(--warm-gray-soft); }
+        .about-section .section-eyebrow-row { border-bottom-color: rgba(244, 239, 230, 0.1); }
+
+        .about-grid {
+            display: grid;
+            grid-template-columns: 1fr 1.4fr;
+            gap: 5rem;
+            align-items: center;
+        }
+
+        @media (max-width: 768px) {
+            .about-grid { grid-template-columns: 1fr; gap: 3rem; }
+        }
+
+        .about-visual {
+            background: var(--terracotta);
+            aspect-ratio: 1;
+            border-radius: 4px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 3rem;
+            position: relative;
+            overflow: hidden;
+        }
+        .about-visual::before {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background: radial-gradient(circle at 25% 15%, rgba(255,255,255,0.18) 0%, transparent 55%);
+        }
+        .about-visual img { width: 55%; max-width: 280px; position: relative; z-index: 1; }
+        .about-visual-corner {
+            position: absolute;
+            bottom: 1.25rem;
+            left: 1.25rem;
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 0.65rem;
+            color: rgba(244, 239, 230, 0.6);
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+        }
+
+        .about-content h3 {
+            font-family: 'Inter Tight', sans-serif;
+            font-weight: 700;
+            font-size: clamp(1.75rem, 3.2vw, 2.75rem);
+            letter-spacing: -0.03em;
+            line-height: 1.1;
+            color: var(--cream);
+            margin-bottom: 2rem;
+        }
+        .about-content h3 em { font-style: italic; color: var(--terracotta-light); }
+        .about-content p {
+            font-size: 1.0625rem;
+            line-height: 1.65;
+            color: rgba(244, 239, 230, 0.7);
+            margin-bottom: 1.25rem;
+        }
+
+        .about-meta {
+            margin-top: 2.5rem;
+            padding-top: 2rem;
+            border-top: 1px solid rgba(244, 239, 230, 0.15);
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 1.5rem;
+        }
+        .about-meta-item { display: flex; flex-direction: column; gap: 0.25rem; }
+        .about-meta-label { font-family: 'JetBrains Mono', monospace; font-size: 0.65rem; color: var(--warm-gray-soft); text-transform: uppercase; letter-spacing: 0.08em; }
+        .about-meta-value { font-family: 'Inter Tight', sans-serif; font-weight: 600; font-size: 1rem; color: var(--cream); letter-spacing: -0.01em; }
+
+        /* BIG QUOTE */
+        .quote-section {
+            padding: 9rem 0;
+            text-align: center;
+            position: relative;
+        }
+        .quote-eyebrow {
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 0.7rem;
+            color: var(--warm-gray);
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+            margin-bottom: 3rem;
+            display: inline-flex;
+            align-items: center;
+            gap: 0.625rem;
+        }
+        .quote-eyebrow::before, .quote-eyebrow::after {
+            content: '';
+            width: 24px;
+            height: 1px;
+            background: var(--border-strong);
+        }
+        .big-quote {
+            font-family: 'Inter Tight', sans-serif;
+            font-weight: 700;
+            font-size: clamp(2.5rem, 6vw, 5.5rem);
+            letter-spacing: -0.045em;
+            line-height: 1;
+            max-width: 16ch;
+            margin: 0 auto;
+            color: var(--black);
+        }
+        .big-quote em { font-style: italic; color: var(--terracotta); font-weight: 600; }
+
+        /* BOOKING */
+        .booking-intro {
+            font-family: 'Inter Tight', sans-serif;
+            font-weight: 700;
+            font-size: clamp(2rem, 4.5vw, 4rem);
+            line-height: 1.05;
+            letter-spacing: -0.04em;
+            color: var(--black);
+            max-width: 22ch;
+            margin-bottom: 5rem;
+        }
+        .booking-intro em { font-style: italic; color: var(--terracotta); font-weight: 600; }
+
+        .booking-split {
+            display: grid;
+            grid-template-columns: 0.85fr 1.2fr;
+            border: 1px solid var(--border);
+            border-radius: 4px;
+            overflow: hidden;
+            background: var(--cream-soft);
+        }
+
+        @media (max-width: 900px) {
+            .booking-split { grid-template-columns: 1fr; }
+        }
+
+        .booking-left {
+            background: var(--black);
+            color: var(--cream);
+            padding: 3rem;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            min-height: 100%;
+            position: relative;
+            overflow: hidden;
+        }
+        .booking-left::before {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background: radial-gradient(circle at 80% 20%, rgba(177, 91, 32, 0.15) 0%, transparent 50%);
+        }
+
+        .booking-left-content { position: relative; z-index: 1; display: flex; flex-direction: column; gap: 1.25rem; }
+
+        .booking-left-eyebrow {
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 0.65rem;
+            color: var(--terracotta-light);
+            text-transform: uppercase;
+            letter-spacing: 0.08em;
+        }
+
+        .booking-left-title {
+            font-family: 'Inter Tight', sans-serif;
+            font-weight: 700;
+            font-size: clamp(1.625rem, 2.4vw, 2.125rem);
+            letter-spacing: -0.025em;
+            line-height: 1.1;
+            color: var(--cream);
+        }
+        .booking-left-title em { font-style: italic; color: var(--terracotta-light); }
+
+        .booking-left-text {
+            font-size: 0.9375rem;
+            line-height: 1.6;
+            color: rgba(244, 239, 230, 0.65);
+        }
+
+        .booking-features {
+            display: flex;
+            flex-direction: column;
+            gap: 0.875rem;
+            margin-top: 2rem;
+            padding-top: 2rem;
+            border-top: 1px solid rgba(244, 239, 230, 0.15);
+            position: relative;
+            z-index: 1;
+        }
+
+        .booking-feature {
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 0.7rem;
+            text-transform: uppercase;
+            letter-spacing: 0.06em;
+            color: rgba(244, 239, 230, 0.85);
+        }
+
+        .booking-feature-icon {
+            width: 18px;
+            height: 18px;
+            color: var(--terracotta-light);
+            flex-shrink: 0;
+        }
+
+        .booking-right {
+            background: var(--cream-soft);
+            padding: 2.5rem;
+        }
+
+        .booking-step-label { display: flex; align-items: center; gap: 0.75rem; font-family: 'JetBrains Mono', monospace; font-size: 0.65rem; color: var(--warm-gray); text-transform: uppercase; letter-spacing: 0.08em; margin-bottom: 1.5rem; }
+        .booking-step-num { display: inline-flex; align-items: center; justify-content: center; width: 22px; height: 22px; border: 1px solid var(--border-strong); border-radius: 50%; font-size: 0.6rem; color: var(--black); }
+        .booking-step-num.active { background: var(--terracotta); border-color: var(--terracotta); color: var(--cream); }
+
+        .calendar-nav { display: flex; justify-content: space-between; align-items: center; margin-bottom: 1.5rem; }
+        .calendar-month { font-family: 'Inter Tight', sans-serif; font-weight: 600; font-size: 1.125rem; letter-spacing: -0.01em; color: var(--black); }
+        .calendar-arrows { display: flex; gap: 0.375rem; }
+        .calendar-arrow { width: 34px; height: 34px; border: 1px solid var(--border); background: transparent; color: var(--black); border-radius: 50%; cursor: pointer; display: inline-flex; align-items: center; justify-content: center; transition: all 0.2s; }
+        .calendar-arrow:hover:not(:disabled) { background: var(--cream); border-color: var(--border-strong); }
+        .calendar-arrow:disabled { opacity: 0.3; cursor: not-allowed; }
+
+        .calendar-grid { display: grid; grid-template-columns: repeat(7, 1fr); gap: 0.4rem; margin-bottom: 2rem; }
+        .calendar-day-label { font-family: 'JetBrains Mono', monospace; font-size: 0.6rem; color: var(--warm-gray-soft); text-transform: uppercase; letter-spacing: 0.08em; text-align: center; padding: 0.5rem 0; }
+        .calendar-day {
+            aspect-ratio: 1;
+            background: var(--cream);
+            border: 1px solid var(--border-soft);
+            border-radius: 8px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            transition: all 0.2s cubic-bezier(0.16, 1, 0.3, 1);
+            position: relative;
+            font-family: 'Inter Tight', sans-serif;
+            font-weight: 600;
+            color: var(--black);
+            font-size: 0.95rem;
+        }
+        .calendar-day:hover:not(.disabled):not(.selected) { background: var(--cream-deep); border-color: var(--border); transform: translateY(-2px); }
+        .calendar-day.disabled { opacity: 0.3; cursor: not-allowed; }
+        .calendar-day.empty { background: transparent; border: none; cursor: default; }
+        .calendar-day.today { border-color: var(--terracotta); }
+        .calendar-day.today::after { content: ''; position: absolute; bottom: 5px; width: 3px; height: 3px; border-radius: 50%; background: var(--terracotta); }
+        .calendar-day.selected { background: var(--terracotta); border-color: var(--terracotta); color: var(--cream); }
+        .calendar-day.selected::after { background: var(--cream); }
+        .calendar-day-num { font-size: 0.95rem; line-height: 1; }
+        .calendar-day-dots { display: flex; gap: 2px; margin-top: 4px; height: 3px; }
+        .calendar-day-dot { width: 3px; height: 3px; background: var(--terracotta); border-radius: 50%; opacity: 0.6; }
+        .calendar-day.disabled .calendar-day-dot { display: none; }
+        .calendar-day.selected .calendar-day-dot { background: var(--cream); opacity: 1; }
+
+        .time-slots { display: grid; grid-template-columns: repeat(auto-fill, minmax(120px, 1fr)); gap: 0.625rem; margin-bottom: 2rem; opacity: 0; max-height: 0; overflow: hidden; transition: opacity 0.4s ease, max-height 0.4s ease, margin-bottom 0.4s ease; }
+        .time-slots.visible { opacity: 1; max-height: 500px; }
+        .time-slot {
+            background: var(--cream);
+            border: 1px solid var(--border-soft);
+            border-radius: 8px;
+            padding: 0.875rem;
+            cursor: pointer;
+            transition: all 0.2s cubic-bezier(0.16, 1, 0.3, 1);
+            display: flex;
+            flex-direction: column;
+            gap: 0.25rem;
+            align-items: center;
+            font-family: 'Inter Tight', sans-serif;
+        }
+        .time-slot:hover:not(.disabled):not(.selected) { background: var(--cream-deep); border-color: var(--border); transform: translateY(-2px); }
+        .time-slot.selected { background: var(--terracotta); border-color: var(--terracotta); color: var(--cream); }
+        .time-slot.disabled { opacity: 0.3; cursor: not-allowed; }
+        .time-slot-time { font-weight: 600; font-size: 0.95rem; letter-spacing: -0.01em; color: var(--black); }
+        .time-slot.selected .time-slot-time { color: var(--cream); }
+        .time-slot-duration { font-family: 'JetBrains Mono', monospace; font-size: 0.6rem; color: var(--warm-gray-soft); text-transform: uppercase; letter-spacing: 0.05em; }
+        .time-slot.selected .time-slot-duration { color: rgba(244, 239, 230, 0.8); }
+
+        .booking-form { display: none; flex-direction: column; gap: 1rem; padding-top: 2rem; border-top: 1px solid var(--border); }
+        .booking-form.visible { display: flex; animation: slideUp 0.4s cubic-bezier(0.16, 1, 0.3, 1); }
+        @keyframes slideUp { from { opacity: 0; transform: translateY(12px); } to { opacity: 1; transform: translateY(0); } }
+        .booking-form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; }
+        @media (max-width: 600px) { .booking-form-row { grid-template-columns: 1fr; } }
+
+        .form-field { display: flex; flex-direction: column; gap: 0.5rem; }
+        .form-label { font-family: 'JetBrains Mono', monospace; font-size: 0.65rem; color: var(--warm-gray); text-transform: uppercase; letter-spacing: 0.08em; }
+        .form-input, .form-textarea {
+            background: var(--cream);
+            border: 1px solid var(--border);
+            border-radius: 8px;
+            padding: 0.875rem 1rem;
+            color: var(--black);
+            font-family: 'Inter', sans-serif;
+            font-size: 0.9375rem;
+            transition: all 0.2s;
+            outline: none;
+        }
+        .form-input:focus, .form-textarea:focus { border-color: var(--terracotta); }
+        .form-input::placeholder, .form-textarea::placeholder { color: var(--warm-gray-soft); }
+        .form-textarea { resize: vertical; min-height: 100px; font-family: inherit; }
+
+        .booking-summary { background: rgba(177, 91, 32, 0.08); border: 1px solid rgba(177, 91, 32, 0.25); border-radius: 8px; padding: 1.25rem; display: flex; justify-content: space-between; align-items: center; margin-bottom: 1rem; }
+        .booking-summary-info { display: flex; flex-direction: column; gap: 0.25rem; }
+        .booking-summary-label { font-family: 'JetBrains Mono', monospace; font-size: 0.6rem; color: var(--terracotta); text-transform: uppercase; letter-spacing: 0.08em; }
+        .booking-summary-text { font-family: 'Inter Tight', sans-serif; font-weight: 600; font-size: 1rem; color: var(--black); letter-spacing: -0.01em; }
+
+        .form-submit {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 0.625rem;
+            background: var(--terracotta);
+            color: var(--cream);
+            font-family: 'Inter Tight', sans-serif;
+            font-weight: 600;
+            font-size: 1rem;
+            letter-spacing: -0.01em;
+            padding: 1.125rem 1.5rem;
+            border-radius: 100px;
+            border: none;
+            cursor: pointer;
+            transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+            margin-top: 0.5rem;
+        }
+        .form-submit:hover { background: var(--terracotta-light); transform: translateY(-2px); box-shadow: 0 12px 32px -8px rgba(177, 91, 32, 0.3); }
+
+        .booking-confirmed { display: none; text-align: center; padding: 3rem 1.5rem; animation: slideUp 0.5s cubic-bezier(0.16, 1, 0.3, 1); }
+        .booking-confirmed.visible { display: block; }
+        .confirmed-icon { width: 56px; height: 56px; border-radius: 50%; background: var(--terracotta); color: var(--cream); display: flex; align-items: center; justify-content: center; margin: 0 auto 2rem; }
+        .confirmed-title { font-family: 'Inter Tight', sans-serif; font-weight: 800; font-size: clamp(1.75rem, 3.5vw, 2.5rem); letter-spacing: -0.03em; line-height: 1; margin-bottom: 1rem; color: var(--black); }
+        .confirmed-text { font-size: 1rem; color: var(--warm-gray); max-width: 460px; margin: 0 auto 2.5rem; line-height: 1.6; }
+        .confirmed-details { display: inline-flex; flex-direction: column; gap: 0.5rem; padding: 1.5rem 2rem; background: var(--cream); border: 1px solid var(--border); border-radius: 8px; font-family: 'Inter Tight', sans-serif; font-weight: 600; color: var(--black); letter-spacing: -0.01em; }
+
+        /* FOOTER */
+        .footer { background: var(--cream); padding: 6rem 0 0; border-top: 1px solid var(--border); position: relative; overflow: hidden; }
+        .footer-grid { display: grid; grid-template-columns: 2fr 1fr 1fr; gap: 4rem; margin-bottom: 5rem; }
+        @media (max-width: 768px) { .footer-grid { grid-template-columns: 1fr; gap: 3rem; } }
+
+        .footer-brand { display: flex; flex-direction: column; gap: 1.5rem; }
+        .footer-logo { width: 48px; height: 48px; }
+        .footer-tagline { font-family: 'Inter Tight', sans-serif; font-weight: 700; font-size: clamp(1.5rem, 2.5vw, 2rem); letter-spacing: -0.03em; color: var(--black); max-width: 380px; line-height: 1.1; }
+        .footer-tagline em { font-style: italic; color: var(--terracotta); font-weight: 600; }
+
+        .footer-column { display: flex; flex-direction: column; gap: 0.75rem; }
+        .footer-column-title { font-family: 'JetBrains Mono', monospace; font-size: 0.65rem; color: var(--warm-gray-soft); text-transform: uppercase; letter-spacing: 0.08em; margin-bottom: 0.75rem; }
+        .footer-column-link { color: var(--black); text-decoration: none; font-size: 0.9375rem; transition: color 0.2s; display: inline-flex; align-items: center; gap: 0.375rem; }
+        .footer-column-link:hover { color: var(--terracotta); }
+        .footer-link-arrow { transition: transform 0.2s; }
+        .footer-column-link:hover .footer-link-arrow { transform: translate(2px, -2px); }
+
+        .footer-bottom { padding: 2rem 0; border-top: 1px solid var(--border); display: flex; justify-content: space-between; font-family: 'JetBrains Mono', monospace; font-size: 0.65rem; color: var(--warm-gray); text-transform: uppercase; letter-spacing: 0.08em; }
+        @media (max-width: 768px) { .footer-bottom { flex-direction: column; gap: 0.5rem; } }
+
+        .footer-mark {
+            margin-top: 4rem;
+            font-family: 'Inter Tight', sans-serif;
+            font-weight: 800;
+            font-size: clamp(7rem, 26vw, 22rem);
+            line-height: 0.85;
+            letter-spacing: -0.06em;
+            color: var(--black);
+            white-space: nowrap;
+            text-align: center;
+            user-select: none;
+            margin-bottom: -2.5rem;
+        }
+        .footer-mark em { font-style: italic; color: var(--terracotta); font-weight: 700; }
+
+        @keyframes fadeUp { from { opacity: 0; transform: translateY(24px); } to { opacity: 1; transform: translateY(0); } }
+        .reveal { opacity: 0; animation: fadeUp 0.9s cubic-bezier(0.16, 1, 0.3, 1) forwards; }
+        .reveal-1 { animation-delay: 0.1s; }
+        .reveal-2 { animation-delay: 0.25s; }
+        .reveal-3 { animation-delay: 0.4s; }
+        .reveal-4 { animation-delay: 0.55s; }
+        .reveal-5 { animation-delay: 0.7s; }
+    </style>
+</head>
+<body>
+    <nav class="nav">
+        <a href="#top" class="nav-logo">
+            <img src="assets/Logos-02.png" alt="m.one">
+            <span class="nav-logo-mark">m.one</span>
+        </a>
+        <div class="nav-links">
+            <a href="#vision" class="nav-link">Visión</a>
+            <a href="#method" class="nav-link">Método</a>
+            <a href="#about" class="nav-link">Sobre</a>
+        </div>
+        <a href="#booking" class="nav-cta">Reservar llamada</a>
+    </nav>
+
+    <section class="hero" id="top">
+        <div class="container">
+            <div class="hero-grid">
+                <div class="hero-content">
+                    <h1 class="hero-title reveal reveal-2">
+                        Estrategia <em>primero.</em><br>
+                        Lo demás, después.
+                    </h1>
+
+                    <p class="hero-description reveal reveal-3">
+                        Marca, marketing y posicionamiento para empresas que quieren <strong>elevar el valor que entregan</strong> a sus clientes — y el que reciben a cambio.
+                    </p>
+
+                    <div class="hero-cta-row reveal reveal-4">
+                        <a href="#booking" class="btn-primary">
+                            Reservar llamada
+                            <svg class="arrow-icon" viewBox="0 0 16 16" fill="none"><path d="M3 8H13M13 8L8.5 3.5M13 8L8.5 12.5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                        </a>
+                        <a href="#vision" class="btn-secondary">
+                            Ver el enfoque
+                            <svg class="arrow-icon" viewBox="0 0 16 16" fill="none"><path d="M8 3L8 13M8 13L3.5 8.5M8 13L12.5 8.5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                        </a>
+                    </div>
+                </div>
+
+                <div class="hero-visual reveal reveal-3">
+                    <span class="hero-visual-corner tl">— m.one</span>
+                    <span class="hero-visual-corner tr">2026</span>
+                    <span class="hero-visual-corner bl">studio</span>
+                    <span class="hero-visual-corner br">★</span>
+                    <img src="assets/Logos-03.png" alt="m.one">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- MARQUEE -->
+    <div class="marquee">
+        <div class="marquee-track">
+            <div class="marquee-item">
+                <span class="marquee-em">Estrategia</span>
+                <span class="marquee-dot"></span>
+                <span>Marca</span>
+                <span class="marquee-dot"></span>
+                <span class="marquee-em">Posicionamiento</span>
+                <span class="marquee-dot"></span>
+                <span>Marketing con visión</span>
+                <span class="marquee-dot"></span>
+                <span class="marquee-em">Decisiones con criterio</span>
+                <span class="marquee-dot"></span>
+                <span>Valor que circula</span>
+                <span class="marquee-dot"></span>
+            </div>
+            <div class="marquee-item">
+                <span class="marquee-em">Estrategia</span>
+                <span class="marquee-dot"></span>
+                <span>Marca</span>
+                <span class="marquee-dot"></span>
+                <span class="marquee-em">Posicionamiento</span>
+                <span class="marquee-dot"></span>
+                <span>Marketing con visión</span>
+                <span class="marquee-dot"></span>
+                <span class="marquee-em">Decisiones con criterio</span>
+                <span class="marquee-dot"></span>
+                <span>Valor que circula</span>
+                <span class="marquee-dot"></span>
+            </div>
+        </div>
+    </div>
+
+    <!-- PHILOSOPHY -->
+    <section class="section" id="vision">
+        <div class="container">
+            <div class="section-eyebrow-row">
+                <span class="section-tag">01 / Visión</span>
+                <span class="section-tag-right">Lo que creo</span>
+            </div>
+
+            <p class="philosophy-intro">
+                Una marca clara <span class="strike">se ve.</span> <em>Se vive.</em>
+            </p>
+
+            <div class="principles">
+                <div class="principle">
+                    <span class="principle-num">01</span>
+                    <div class="principle-content">
+                        <h3 class="principle-title"><em>Visión</em> primero.</h3>
+                        <p class="principle-text">Si no sabes a dónde vas, ningún logo, web o campaña te lleva ahí. Empezamos por lo difícil: pensar.</p>
+                    </div>
+                </div>
+                <div class="principle">
+                    <span class="principle-num">02</span>
+                    <div class="principle-content">
+                        <h3 class="principle-title"><em>Contexto</em> sobre todo.</h3>
+                        <p class="principle-text">Cada negocio tiene su propio contexto. La estrategia se construye desde lo que eres y a dónde quieres llegar.</p>
+                    </div>
+                </div>
+                <div class="principle">
+                    <span class="principle-num">03</span>
+                    <div class="principle-content">
+                        <h3 class="principle-title"><em>Valor</em> que circula.</h3>
+                        <p class="principle-text">Cuando elevas el valor que entregas, sube el valor que recibes. Una marca clara conecta esas dos cosas.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- MANIFESTO BAND -->
+    <div class="manifesto-band">
+        <div class="container">
+            <div class="manifesto-eyebrow">— Manifiesto —</div>
+            <p class="manifesto-quote">
+                La marca no es cómo te ven. Es la diferencia que sienten cuando trabajan contigo.
+            </p>
+        </div>
+    </div>
+
+    <!-- METHOD -->
+    <section class="section" id="method">
+        <div class="container">
+            <div class="section-eyebrow-row">
+                <span class="section-tag">02 / Método</span>
+                <span class="section-tag-right">Cómo trabajo</span>
+            </div>
+
+            <p class="method-intro">
+                El <em>qué</em> cambia. El <em>cómo,</em> no.
+            </p>
+
+            <div class="method-list">
+                <div class="method-row">
+                    <span class="method-num">— 01</span>
+                    <h3 class="method-step">Escucha</h3>
+                    <p class="method-text">Primero entender. Una conversación honesta para saber quién eres, qué quieres construir y si tiene sentido trabajar juntos.</p>
+                </div>
+                <div class="method-row">
+                    <span class="method-num">— 02</span>
+                    <h3 class="method-step">Diagnóstico</h3>
+                    <p class="method-text">Mirar la marca como un sistema. Estrategia, identidad, narrativa, presencia digital, experiencia. Detectar qué funciona, qué falta y qué se puede afinar.</p>
+                </div>
+                <div class="method-row">
+                    <span class="method-num">— 03</span>
+                    <h3 class="method-step">Ejecución</h3>
+                    <p class="method-text">Trabajar lo que mueve la aguja. Cada decisión conectada a un objetivo de negocio. Estrategia primero, ejecución después.</p>
+                </div>
+                <div class="method-row">
+                    <span class="method-num">— 04</span>
+                    <h3 class="method-step">Acompañamiento</h3>
+                    <p class="method-text">Acompañar hasta que funciona. Una marca se prueba, se ajusta y se afina hasta que opera de verdad — y después, hasta donde quieras llevarla.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ABOUT (BLACK) -->
+    <section class="about-section" id="about">
+        <div class="container">
+            <div class="section-eyebrow-row">
+                <span class="section-tag">03 / Sobre</span>
+                <span class="section-tag-right">Quién soy</span>
+            </div>
+
+            <div class="about-grid">
+                <div class="about-visual">
+                    <span class="about-visual-corner">— m.one studio</span>
+                    <img src="assets/Logos-03.png" alt="m.one">
+                </div>
+                <div class="about-content">
+                    <h3>
+                        La pregunta no es <em>qué vendes.</em> Es <em>por qué te eligen.</em>
+                    </h3>
+                    <p>Llevo años ayudando a marcas a encontrar lo que las hace específicas. He visto qué funciona, qué no, y qué da igual aunque parezca importante.</p>
+                    <p>m.one es la consecuencia: un enfoque estratégico al marketing y la marca, donde cada decisión tiene una razón clara y cada proyecto se construye sobre lo que tu negocio necesita de verdad.</p>
+
+                    <div class="about-meta">
+                        <div class="about-meta-item">
+                            <span class="about-meta-label">Enfoque</span>
+                            <span class="about-meta-value">Estrategia primero</span>
+                        </div>
+                        <div class="about-meta-item">
+                            <span class="about-meta-label">Modalidad</span>
+                            <span class="about-meta-value">Personalizado por proyecto</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- BIG QUOTE -->
+    <section class="quote-section">
+        <div class="container">
+            <div class="quote-eyebrow">— Idea fuerza —</div>
+            <p class="big-quote">
+                Una marca clara <em>se nota.</em> Una marca estratégica <em>se convierte.</em>
+            </p>
+        </div>
+    </section>
+
+    <!-- BOOKING -->
+    <section class="section" id="booking">
+        <div class="container">
+            <div class="section-eyebrow-row">
+                <span class="section-tag">04 / Hablar</span>
+                <span class="section-tag-right">Reservar llamada</span>
+            </div>
+
+            <p class="booking-intro">
+                <em>30 minutos.</em> Una conversación. <em>Cero compromiso.</em>
+            </p>
+
+            <div class="booking-split">
+                <div class="booking-left">
+                    <div class="booking-left-content">
+                        <span class="booking-left-eyebrow">— Llamada inicial</span>
+                        <h3 class="booking-left-title">Una conversación de <em>30 minutos</em> para conocernos.</h3>
+                        <p class="booking-left-text">
+                            Hablamos de tu proyecto, en qué punto estás y qué necesitas. Si tiene sentido seguir, lo hablamos. Si no, te llevas una conversación útil.
+                        </p>
+                    </div>
+                    <div class="booking-features">
+                        <div class="booking-feature">
+                            <svg class="booking-feature-icon" viewBox="0 0 24 24" fill="none"><path d="M12 6V12L16 14M22 12C22 17.5228 17.5228 22 12 22C6.47715 22 2 17.5228 2 12C2 6.47715 6.47715 2 12 2C17.5228 2 22 6.47715 22 12Z" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                            30 minutos
+                        </div>
+                        <div class="booking-feature">
+                            <svg class="booking-feature-icon" viewBox="0 0 24 24" fill="none"><path d="M23 7L16 12L23 17V7Z" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/><rect x="1" y="5" width="15" height="14" rx="2" stroke="currentColor" stroke-width="1.5"/></svg>
+                            Vía Google Meet
+                        </div>
+                        <div class="booking-feature">
+                            <svg class="booking-feature-icon" viewBox="0 0 24 24" fill="none"><path d="M12 2L15.09 8.26L22 9.27L17 14.14L18.18 21.02L12 17.77L5.82 21.02L7 14.14L2 9.27L8.91 8.26L12 2Z" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                            Sin coste
+                        </div>
+                    </div>
+                </div>
+
+                <div class="booking-right" id="bookingRight">
+                    <div id="bookingForm">
+                        <div class="booking-step-label">
+                            <span class="booking-step-num active">1</span>
+                            Elige día y hora
+                        </div>
+
+                        <div class="calendar-nav">
+                            <div class="calendar-month" id="calendarMonth">—</div>
+                            <div class="calendar-arrows">
+                                <button class="calendar-arrow" id="calPrev" aria-label="Mes anterior">
+                                    <svg width="14" height="14" viewBox="0 0 16 16" fill="none"><path d="M10 3L5 8L10 13" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                                </button>
+                                <button class="calendar-arrow" id="calNext" aria-label="Mes siguiente">
+                                    <svg width="14" height="14" viewBox="0 0 16 16" fill="none"><path d="M6 3L11 8L6 13" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                                </button>
+                            </div>
+                        </div>
+
+                        <div class="calendar-grid" id="calendarGrid"></div>
+                        <div class="time-slots" id="timeSlots"></div>
+
+                        <div class="booking-form" id="contactForm">
+                            <div class="booking-step-label">
+                                <span class="booking-step-num active">2</span>
+                                Tus datos
+                            </div>
+
+                            <div class="booking-summary">
+                                <div class="booking-summary-info">
+                                    <span class="booking-summary-label">Fecha y hora</span>
+                                    <span class="booking-summary-text" id="summaryText">—</span>
+                                </div>
+                                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" style="color: var(--terracotta);"><path d="M16 2V6M8 2V6M3 10H21M5 4H19C20.1046 4 21 4.89543 21 6V20C21 21.1046 20.1046 22 19 22H5C3.89543 22 3 21.1046 3 20V6C3 4.89543 3.89543 4 5 4Z" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg>
+                            </div>
+
+                            <div class="booking-form-row">
+                                <div class="form-field">
+                                    <label class="form-label">— Nombre</label>
+                                    <input type="text" class="form-input" id="formName" placeholder="Cómo te llamas">
+                                </div>
+                                <div class="form-field">
+                                    <label class="form-label">— Email</label>
+                                    <input type="email" class="form-input" id="formEmail" placeholder="tu@email.com">
+                                </div>
+                            </div>
+
+                            <div class="form-field">
+                                <label class="form-label">— Empresa o proyecto</label>
+                                <input type="text" class="form-input" id="formBrand" placeholder="Nombre del proyecto o empresa">
+                            </div>
+
+                            <div class="form-field">
+                                <label class="form-label">— ¿Qué te trae aquí?</label>
+                                <textarea class="form-textarea" id="formMessage" placeholder="Cuéntame brevemente en qué punto estás y qué necesitas."></textarea>
+                            </div>
+
+                            <button class="form-submit" id="submitBooking">
+                                Confirmar llamada
+                                <svg class="arrow-icon" viewBox="0 0 16 16" fill="none"><path d="M3 8H13M13 8L8.5 3.5M13 8L8.5 12.5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                            </button>
+                        </div>
+                    </div>
+
+                    <div class="booking-confirmed" id="bookingConfirmed">
+                        <div class="confirmed-icon">
+                            <svg width="26" height="26" viewBox="0 0 24 24" fill="none"><path d="M5 12L10 17L19 7" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                        </div>
+                        <h3 class="confirmed-title">Listo. Hablamos pronto.</h3>
+                        <p class="confirmed-text">Te he reservado este hueco. Recibirás un email de confirmación con el link de Google Meet en los próximos minutos.</p>
+                        <div class="confirmed-details" id="confirmedDetails">—</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- FOOTER -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-brand">
+                    <img src="assets/Logos-02.png" alt="m.one" class="footer-logo">
+                    <p class="footer-tagline">Estrategia <em>primero.</em></p>
+                </div>
+                <div class="footer-column">
+                    <span class="footer-column-title">— Navegar</span>
+                    <a href="#vision" class="footer-column-link">Visión</a>
+                    <a href="#method" class="footer-column-link">Método</a>
+                    <a href="#about" class="footer-column-link">Sobre</a>
+                    <a href="#booking" class="footer-column-link">Reservar</a>
+                </div>
+                <div class="footer-column">
+                    <span class="footer-column-title">— Contacto</span>
+                    <a href="mailto:hola@m.one" class="footer-column-link">hola@m.one
+                        <svg class="footer-link-arrow" width="10" height="10" viewBox="0 0 10 10" fill="none"><path d="M2 8L8 2M8 2H3.5M8 2V6.5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                    </a>
+                    <a href="#" class="footer-column-link">Instagram
+                        <svg class="footer-link-arrow" width="10" height="10" viewBox="0 0 10 10" fill="none"><path d="M2 8L8 2M8 2H3.5M8 2V6.5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                    </a>
+                    <a href="#" class="footer-column-link">LinkedIn
+                        <svg class="footer-link-arrow" width="10" height="10" viewBox="0 0 10 10" fill="none"><path d="M2 8L8 2M8 2H3.5M8 2V6.5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                    </a>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <span>© 2026 m.one — All rights reserved</span>
+                <span>Hecho con criterio</span>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        const monthNames = ['Enero', 'Febrero', 'Marzo', 'Abril', 'Mayo', 'Junio', 'Julio', 'Agosto', 'Septiembre', 'Octubre', 'Noviembre', 'Diciembre'];
+        const dayLabels = ['Lun', 'Mar', 'Mié', 'Jue', 'Vie', 'Sáb', 'Dom'];
+        const timeSlotOptions = [
+            { time: '10:00', duration: '30 min' },
+            { time: '11:30', duration: '30 min' },
+            { time: '13:00', duration: '30 min' },
+            { time: '16:00', duration: '30 min' },
+            { time: '17:30', duration: '30 min' },
+            { time: '19:00', duration: '30 min' }
+        ];
+
+        let currentDate = new Date();
+        let viewMonth = currentDate.getMonth();
+        let viewYear = currentDate.getFullYear();
+        let selectedDate = null;
+        let selectedTime = null;
+
+        function isWeekend(d) { const x = d.getDay(); return x === 0 || x === 6; }
+        function isPast(d) { const t = new Date(); t.setHours(0,0,0,0); return d < t; }
+        function isSameDay(a, b) { if (!a || !b) return false; return a.getDate()===b.getDate() && a.getMonth()===b.getMonth() && a.getFullYear()===b.getFullYear(); }
+
+        function renderCalendar() {
+            const monthEl = document.getElementById('calendarMonth');
+            const gridEl = document.getElementById('calendarGrid');
+            monthEl.textContent = `${monthNames[viewMonth]} ${viewYear}`;
+            const today = new Date();
+            const prevBtn = document.getElementById('calPrev');
+            prevBtn.disabled = viewYear < today.getFullYear() || (viewYear === today.getFullYear() && viewMonth <= today.getMonth());
+
+            gridEl.innerHTML = '';
+            dayLabels.forEach(d => { const el = document.createElement('div'); el.className = 'calendar-day-label'; el.textContent = d; gridEl.appendChild(el); });
+
+            const firstDay = new Date(viewYear, viewMonth, 1);
+            let startOffset = firstDay.getDay() - 1;
+            if (startOffset < 0) startOffset = 6;
+            for (let i = 0; i < startOffset; i++) { const empty = document.createElement('div'); empty.className = 'calendar-day empty'; gridEl.appendChild(empty); }
+
+            const lastDay = new Date(viewYear, viewMonth + 1, 0).getDate();
+            for (let day = 1; day <= lastDay; day++) {
+                const date = new Date(viewYear, viewMonth, day);
+                const dayEl = document.createElement('div');
+                dayEl.className = 'calendar-day';
+                const past = isPast(date);
+                const weekend = isWeekend(date);
+                const todayCheck = isSameDay(date, today);
+                if (past || weekend) dayEl.classList.add('disabled');
+                if (todayCheck) dayEl.classList.add('today');
+                if (isSameDay(date, selectedDate)) dayEl.classList.add('selected');
+                dayEl.innerHTML = `<span class="calendar-day-num">${day}</span>${!past && !weekend ? '<div class="calendar-day-dots"><div class="calendar-day-dot"></div><div class="calendar-day-dot"></div><div class="calendar-day-dot"></div></div>' : '<div class="calendar-day-dots"></div>'}`;
+                if (!past && !weekend) dayEl.addEventListener('click', () => selectDate(date));
+                gridEl.appendChild(dayEl);
+            }
+        }
+
+        function selectDate(date) {
+            selectedDate = date;
+            selectedTime = null;
+            renderCalendar();
+            renderTimeSlots();
+            document.getElementById('contactForm').classList.remove('visible');
+        }
+
+        function renderTimeSlots() {
+            const container = document.getElementById('timeSlots');
+            container.innerHTML = '';
+            if (!selectedDate) { container.classList.remove('visible'); return; }
+            const seed = selectedDate.getDate();
+            timeSlotOptions.forEach((slot, i) => {
+                const slotEl = document.createElement('div');
+                slotEl.className = 'time-slot';
+                const isDisabled = (seed + i) % 4 === 0;
+                if (isDisabled) slotEl.classList.add('disabled');
+                if (selectedTime === slot.time) slotEl.classList.add('selected');
+                slotEl.innerHTML = `<span class="time-slot-time">${slot.time}</span><span class="time-slot-duration">${slot.duration}</span>`;
+                if (!isDisabled) slotEl.addEventListener('click', () => selectTime(slot.time));
+                container.appendChild(slotEl);
+            });
+            container.classList.add('visible');
+        }
+
+        function selectTime(time) {
+            selectedTime = time;
+            renderTimeSlots();
+            const form = document.getElementById('contactForm');
+            form.classList.add('visible');
+            const dayName = ['Domingo', 'Lunes', 'Martes', 'Miércoles', 'Jueves', 'Viernes', 'Sábado'][selectedDate.getDay()];
+            const summary = `${dayName}, ${selectedDate.getDate()} de ${monthNames[selectedDate.getMonth()].toLowerCase()} · ${time}`;
+            document.getElementById('summaryText').textContent = summary;
+            setTimeout(() => { form.scrollIntoView({ behavior: 'smooth', block: 'nearest' }); }, 100);
+        }
+
+        document.getElementById('calPrev').addEventListener('click', () => { viewMonth--; if (viewMonth < 0) { viewMonth = 11; viewYear--; } renderCalendar(); });
+        document.getElementById('calNext').addEventListener('click', () => { viewMonth++; if (viewMonth > 11) { viewMonth = 0; viewYear++; } renderCalendar(); });
+
+        document.getElementById('submitBooking').addEventListener('click', (e) => {
+            e.preventDefault();
+            const name = document.getElementById('formName').value.trim();
+            const email = document.getElementById('formEmail').value.trim();
+            if (!name || !email) { alert('Por favor, completa tu nombre y email.'); return; }
+            document.getElementById('bookingForm').style.display = 'none';
+            document.getElementById('bookingConfirmed').classList.add('visible');
+            const dayName = ['Domingo', 'Lunes', 'Martes', 'Miércoles', 'Jueves', 'Viernes', 'Sábado'][selectedDate.getDay()];
+            document.getElementById('confirmedDetails').innerHTML = `${dayName}, ${selectedDate.getDate()} de ${monthNames[selectedDate.getMonth()].toLowerCase()} de ${selectedDate.getFullYear()}<br><span style="color: var(--terracotta);">${selectedTime} · 30 min · Google Meet</span>`;
+        });
+
+        renderCalendar();
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => { if (entry.isIntersecting) { entry.target.style.opacity = '1'; entry.target.style.transform = 'translateY(0)'; } });
+        }, { threshold: 0.1, rootMargin: '0px 0px -50px 0px' });
+
+        document.querySelectorAll('.principle, .method-row, .about-visual, .about-content, .booking-split, .philosophy-intro, .method-intro, .booking-intro, .big-quote, .manifesto-quote').forEach(el => {
+            el.style.opacity = '0';
+            el.style.transform = 'translateY(24px)';
+            el.style.transition = 'opacity 0.9s cubic-bezier(0.16, 1, 0.3, 1), transform 0.9s cubic-bezier(0.16, 1, 0.3, 1)';
+            observer.observe(el);
+        });
+    </script>
+</body>
+</html>
