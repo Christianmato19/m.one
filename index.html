@@ -69,7 +69,7 @@
         }
 
         .nav-logo { display: flex; align-items: center; gap: 0.625rem; text-decoration: none; color: var(--black); }
-        .nav-logo img { height: 22px; width: auto; }
+        .nav-logo img { height: 28px; width: auto; filter: brightness(0); }
         .nav-logo-mark { font-family: 'JetBrains Mono', monospace; font-size: 0.7rem; color: var(--warm-gray); text-transform: uppercase; letter-spacing: 0.08em; }
         .nav-links { display: flex; gap: 1.75rem; align-items: center; }
         .nav-link { font-family: 'JetBrains Mono', monospace; font-size: 0.65rem; color: var(--warm-gray); text-decoration: none; text-transform: uppercase; letter-spacing: 0.08em; transition: color 0.2s; }
@@ -255,7 +255,7 @@
             background: radial-gradient(circle at 25% 15%, rgba(255,255,255,0.18) 0%, transparent 55%);
             pointer-events: none;
         }
-        .hero-visual img { width: 55%; max-width: 280px; height: auto; position: relative; z-index: 1; }
+        .hero-visual img { width: 65%; max-width: 340px; height: auto; position: relative; z-index: 1; filter: brightness(0) invert(1); }
 
         .hero-visual-corner {
             position: absolute;
@@ -633,7 +633,7 @@
             inset: 0;
             background: radial-gradient(circle at 25% 15%, rgba(255,255,255,0.18) 0%, transparent 55%);
         }
-        .about-visual img { width: 55%; max-width: 280px; position: relative; z-index: 1; }
+        .about-visual img { width: 65%; max-width: 340px; position: relative; z-index: 1; filter: brightness(0) invert(1); }
         .about-visual-corner {
             position: absolute;
             bottom: 1.25rem;
@@ -1040,7 +1040,7 @@
         @media (max-width: 768px) { .footer-grid { grid-template-columns: 1fr; gap: 3rem; } }
 
         .footer-brand { display: flex; flex-direction: column; gap: 1.5rem; }
-        .footer-logo { width: 48px; height: 48px; }
+        .footer-logo { width: auto; height: 56px; }
         .footer-tagline { font-family: 'Inter Tight', sans-serif; font-weight: 700; font-size: clamp(1.5rem, 2.5vw, 2rem); letter-spacing: -0.03em; color: var(--black); max-width: 380px; line-height: 1.1; }
         .footer-tagline em { font-style: italic; color: var(--terracotta); font-weight: 600; }
 
@@ -1081,7 +1081,7 @@
 <body>
     <nav class="nav">
         <a href="#top" class="nav-logo">
-            <img src="assets/Logos-02.png" alt="m.one">
+            <img src="assets/m-one-logo.png" alt="m.one">
             <span class="nav-logo-mark">m.one</span>
         </a>
         <div class="nav-links">
@@ -1122,7 +1122,7 @@
                     <span class="hero-visual-corner tr">2026</span>
                     <span class="hero-visual-corner bl">studio</span>
                     <span class="hero-visual-corner br">★</span>
-                    <img src="assets/Logos-03.png" alt="m.one">
+                    <img src="assets/m-one-logo.png" alt="m.one">
                 </div>
             </div>
         </div>
@@ -1258,7 +1258,7 @@
             <div class="about-grid">
                 <div class="about-visual">
                     <span class="about-visual-corner">— m.one studio</span>
-                    <img src="assets/Logos-03.png" alt="m.one">
+                    <img src="assets/m-one-logo.png" alt="m.one">
                 </div>
                 <div class="about-content">
                     <h3>
@@ -1366,7 +1366,7 @@
         <div class="container">
             <div class="footer-grid">
                 <div class="footer-brand">
-                    <img src="assets/Logos-02.png" alt="m.one" class="footer-logo">
+                    <img src="assets/m-one-logo.png" alt="m.one" class="footer-logo">
                     <p class="footer-tagline">Estrategia <em>primero.</em></p>
                 </div>
                 <div class="footer-column">
