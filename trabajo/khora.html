@@ -1,0 +1,423 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>KHORA — la comida tratada como streetwear · m.one</title>
+<meta name="description" content="Caso KHORA. Branding completo para un nuevo concepto de comida sana. Identidad, packaging, uniformes, app y cartelería. Por m.one studio.">
+<link href="https://fonts.googleapis.com/css2?family=Inter+Tight:ital,wght@0,400;0,500;0,600;0,700;0,800;1,400;1,500;1,600;1,700;1,800&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+
+<script type="text/javascript">
+(function (C, A, L) { let p = function (a, ar) { a.q.push(ar); }; let d = C.document; C.Cal = C.Cal || function () { let cal = C.Cal; let ar = arguments; if (!cal.loaded) { cal.ns = {}; cal.q = cal.q || []; d.head.appendChild(d.createElement("script")).src = A; cal.loaded = true; } if (ar[0] === L) { const api = function () { p(api, arguments); }; const namespace = ar[1]; api.q = api.q || []; if(typeof namespace === "string"){cal.ns[namespace] = cal.ns[namespace] || api;p(cal.ns[namespace], ar);p(cal, ["initNamespace", namespace]);} else p(cal, ar); return;} p(cal, ar); }; })(window, "https://app.cal.com/embed/embed.js", "init");
+Cal("init", "llamada-inicial-30min", {origin:"https://app.cal.com"});
+Cal.ns["llamada-inicial-30min"]("ui", {"cssVarsPerTheme":{"light":{"cal-brand":"#B15B20","cal-text":"#1A1714","cal-bg":"#F4EFE6","cal-border-default":"#E0D5BE"},"dark":{"cal-brand":"#D4763A","cal-text":"#F4EFE6","cal-bg":"#1A1714"}},"hideEventTypeDetails":false,"layout":"month_view"});
+</script>
+
+<style>
+:root{
+    --cream:#F4EFE6;--cream-soft:#EDE5D4;--cream-deep:#E0D5BE;
+    --black:#1A1714;--black-soft:#272422;
+    --terracotta:#B15B20;--terracotta-light:#D4763A;--terracotta-dark:#8A4418;
+    --warm-gray:#6A5F52;--warm-gray-soft:#9A8E7E;
+    --border:rgba(26,23,20,0.15);--border-soft:rgba(26,23,20,0.08);
+}
+*{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{font-family:'Inter',sans-serif;background:var(--cream);color:var(--black);line-height:1.6;-webkit-font-smoothing:antialiased;overflow-x:hidden}
+
+body::before{content:'';position:fixed;inset:0;pointer-events:none;z-index:9999;opacity:.04;background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='3'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E")}
+
+em{font-style:italic;color:var(--terracotta)}
+.container{max-width:1280px;margin:0 auto;padding:0 2rem}
+.container-narrow{max-width:880px;margin:0 auto;padding:0 2rem}
+
+/* NAV */
+.nav{position:fixed;top:1.5rem;left:50%;transform:translateX(-50%);z-index:100;background:rgba(244,239,230,.85);backdrop-filter:blur(20px);border:1px solid var(--border);border-radius:100px;padding:.625rem 1.25rem;display:flex;align-items:center;gap:1.75rem;box-shadow:0 8px 24px -8px rgba(0,0,0,.08)}
+.nav-logo{height:1.5rem;display:flex;align-items:center}
+.nav-logo img{height:100%;width:auto;filter:brightness(0)}
+.nav-links{display:flex;gap:1.25rem}
+.nav-links a{font-family:'JetBrains Mono',monospace;font-size:.65rem;text-transform:uppercase;letter-spacing:.1em;color:var(--warm-gray);text-decoration:none;transition:color .25s}
+.nav-links a:hover{color:var(--terracotta)}
+.nav-cta{font-family:'JetBrains Mono',monospace;font-size:.65rem;text-transform:uppercase;letter-spacing:.1em;color:var(--cream);background:var(--black);padding:.5rem 1rem;border-radius:100px;text-decoration:none;transition:background .25s}
+.nav-cta:hover{background:var(--terracotta)}
+@media(max-width:760px){.nav-links{display:none}.nav{padding:.5rem .75rem .5rem 1rem}}
+
+/* CASE HEADER */
+.case-header{padding:9rem 0 4rem}
+.crumbs{font-family:'JetBrains Mono',monospace;font-size:.65rem;text-transform:uppercase;letter-spacing:.1em;color:var(--warm-gray);margin-bottom:3rem;display:flex;align-items:center;gap:.5rem}
+.crumbs a{color:var(--warm-gray);text-decoration:none;transition:color .25s}
+.crumbs a:hover{color:var(--terracotta)}
+.crumbs .sep{color:var(--warm-gray-soft)}
+.crumbs .current{color:var(--terracotta)}
+
+.case-eyebrow{display:flex;align-items:center;gap:.75rem;color:var(--terracotta);font-family:'JetBrains Mono',monospace;font-size:.7rem;text-transform:uppercase;letter-spacing:.1em;margin-bottom:1.5rem}
+.case-eyebrow::before{content:'';width:32px;height:1px;background:var(--terracotta)}
+
+.case-title{font-family:'Inter Tight',sans-serif;font-weight:800;font-size:clamp(2.5rem,6vw,4.75rem);line-height:.95;letter-spacing:-.045em;margin-bottom:1.5rem;max-width:18ch}
+.case-title em{font-style:italic;color:var(--terracotta);font-weight:700}
+
+.case-sub{font-family:'Inter Tight',sans-serif;font-weight:500;font-size:clamp(1.125rem,1.4vw,1.375rem);line-height:1.4;color:var(--warm-gray);max-width:48ch;letter-spacing:-.01em}
+
+/* HERO IMAGE */
+.case-hero-img{margin:3rem 0 5rem}
+.case-hero-img img{width:100%;height:auto;display:block;border-radius:8px;box-shadow:0 24px 60px -20px rgba(0,0,0,.2)}
+
+/* META BAR */
+.case-meta{display:grid;grid-template-columns:repeat(5,1fr);gap:2rem;padding:2rem 0;margin:0 0 5rem;border-top:1px solid var(--border);border-bottom:1px solid var(--border)}
+.case-meta-item{display:flex;flex-direction:column;gap:.5rem}
+.case-meta-label{font-family:'JetBrains Mono',monospace;font-size:.6rem;color:var(--warm-gray-soft);text-transform:uppercase;letter-spacing:.1em}
+.case-meta-value{font-family:'Inter Tight',sans-serif;font-weight:600;font-size:1rem;letter-spacing:-.01em;color:var(--black)}
+@media(max-width:760px){.case-meta{grid-template-columns:repeat(2,1fr);gap:1.5rem}}
+
+/* EDITORIAL SECTION */
+.section{padding:4rem 0}
+.section-grid{display:grid;grid-template-columns:240px 1fr;gap:3rem;align-items:start}
+.section-num{font-family:'Inter Tight',sans-serif;font-weight:200;font-size:5rem;line-height:.85;letter-spacing:-.04em;color:var(--terracotta)}
+.section-label{font-family:'JetBrains Mono',monospace;font-size:.7rem;text-transform:uppercase;letter-spacing:.1em;color:var(--warm-gray);margin-top:.75rem}
+.section-content h2{font-family:'Inter Tight',sans-serif;font-weight:700;font-size:clamp(1.75rem,3vw,2.5rem);line-height:1.05;letter-spacing:-.03em;margin-bottom:1.5rem;max-width:22ch}
+.section-content h2 em{font-style:italic;color:var(--terracotta)}
+.section-content p{font-family:'Inter Tight',sans-serif;font-weight:400;font-size:1.125rem;line-height:1.55;color:var(--warm-gray);max-width:58ch;margin-bottom:1.25rem}
+.section-content p strong{color:var(--black);font-weight:600}
+.section-content p em{font-style:italic;color:var(--terracotta);font-weight:500}
+
+@media(max-width:760px){.section-grid{grid-template-columns:1fr;gap:1rem}.section-num{font-size:3.5rem}}
+
+/* IMAGE BLOCK */
+.image-block{margin:5rem 0}
+.image-block img{width:100%;height:auto;display:block;border-radius:6px}
+.image-caption{font-family:'JetBrains Mono',monospace;font-size:.6rem;text-transform:uppercase;letter-spacing:.1em;color:var(--warm-gray);margin-top:1rem;display:flex;justify-content:space-between}
+.image-caption .desc{color:var(--warm-gray)}
+.image-caption .meta{color:var(--terracotta)}
+
+.image-grid-2{display:grid;grid-template-columns:1fr 1fr;gap:1.5rem;margin:5rem 0}
+.image-grid-2 img{width:100%;height:auto;display:block;border-radius:6px}
+
+.image-grid-3{display:grid;grid-template-columns:repeat(3,1fr);gap:1.5rem;margin:5rem 0}
+.image-grid-3 img{width:100%;height:auto;display:block;border-radius:6px;aspect-ratio:1/1;object-fit:cover}
+
+@media(max-width:760px){.image-grid-2,.image-grid-3{grid-template-columns:1fr;gap:1rem}}
+
+/* QUOTE BAND (terracotta) */
+.case-band{background:var(--terracotta);color:var(--cream);padding:6rem 0;margin:6rem 0;position:relative;overflow:hidden}
+.case-band::before{content:'';position:absolute;inset:0;background:radial-gradient(ellipse at 30% 20%,rgba(255,255,255,.15) 0%,transparent 60%)}
+.case-band::after{content:'';position:absolute;inset:0;background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='3'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");opacity:.06}
+.case-band-content{position:relative;z-index:2}
+.case-band-eyebrow{font-family:'JetBrains Mono',monospace;font-size:.7rem;color:rgba(242,237,228,.7);text-transform:uppercase;letter-spacing:.1em;display:flex;align-items:center;gap:.75rem;margin-bottom:2rem}
+.case-band-eyebrow::before{content:'';width:24px;height:1px;background:rgba(242,237,228,.5)}
+.case-band-quote{font-family:'Inter Tight',sans-serif;font-weight:600;font-style:italic;font-size:clamp(1.75rem,3.5vw,2.875rem);line-height:1.15;letter-spacing:-.025em;max-width:24ch;color:var(--cream)}
+.case-band-quote em{font-style:italic;color:rgba(242,237,228,.65);font-weight:600}
+
+/* NEXT CASE */
+.next-case{padding:6rem 0;border-top:1px solid var(--border);text-align:center}
+.next-eyebrow{font-family:'JetBrains Mono',monospace;font-size:.7rem;color:var(--terracotta);text-transform:uppercase;letter-spacing:.1em;margin-bottom:1.5rem}
+.next-case-link{display:block;text-decoration:none;color:inherit;transition:transform .35s}
+.next-case-link:hover{transform:translateY(-3px)}
+.next-case-name{font-family:'Inter Tight',sans-serif;font-weight:800;font-size:clamp(2.5rem,5vw,4rem);line-height:1;letter-spacing:-.045em;color:var(--black);margin-bottom:.75rem}
+.next-case-name em{font-style:italic;color:var(--terracotta);font-weight:700}
+.next-case-brief{font-family:'Inter Tight',sans-serif;font-size:1.0625rem;color:var(--warm-gray);margin-bottom:1.5rem;font-weight:500}
+.next-case-arrow{font-family:'JetBrains Mono',monospace;font-size:.7rem;text-transform:uppercase;letter-spacing:.1em;color:var(--terracotta);display:inline-flex;align-items:center;gap:.5rem;transition:gap .3s}
+.next-case-link:hover .next-case-arrow{gap:1rem}
+.next-case-arrow::after{content:'→'}
+
+/* BOOKING (simplified — single row, less imposing on case pages) */
+.case-booking{background:var(--black);color:var(--cream);padding:5rem 0;text-align:center;position:relative;overflow:hidden}
+.case-booking::before{content:'';position:absolute;inset:0;background:radial-gradient(ellipse at 50% 30%,rgba(177,91,32,.18) 0%,transparent 60%)}
+.case-booking-content{position:relative;z-index:2}
+.case-booking-eyebrow{font-family:'JetBrains Mono',monospace;font-size:.7rem;color:var(--terracotta-light);text-transform:uppercase;letter-spacing:.1em;margin-bottom:1.5rem}
+.case-booking h2{font-family:'Inter Tight',sans-serif;font-weight:700;font-size:clamp(1.75rem,3vw,2.5rem);letter-spacing:-.03em;line-height:1.1;margin-bottom:1.25rem;max-width:22ch;margin-left:auto;margin-right:auto}
+.case-booking h2 em{font-style:italic;color:var(--terracotta-light);font-weight:700}
+.case-booking p{font-family:'Inter Tight',sans-serif;font-weight:400;font-size:1.0625rem;color:rgba(242,237,228,.7);max-width:42ch;margin:0 auto 2rem}
+.case-booking-btn{display:inline-flex;align-items:center;gap:.625rem;background:var(--cream);color:var(--black);font-family:'Inter Tight',sans-serif;font-weight:600;font-size:.95rem;letter-spacing:-.01em;padding:1rem 1.5rem;border-radius:100px;text-decoration:none;transition:all .25s;border:none;cursor:pointer}
+.case-booking-btn:hover{background:var(--terracotta);color:var(--cream)}
+.case-booking-btn::after{content:'→';font-size:1.1em}
+
+/* FOOTER */
+.footer{background:var(--black);color:var(--cream);padding:5rem 0 2rem}
+.footer-grid{display:grid;grid-template-columns:1.5fr 1fr 1fr 1fr;gap:3rem;padding-bottom:3rem;border-bottom:1px solid rgba(242,237,228,.15)}
+.footer-brand-logo{height:2.5rem;margin-bottom:1.5rem;display:block}
+.footer-brand-logo img{height:100%;width:auto}
+.footer-tagline{font-family:'Inter Tight',sans-serif;font-weight:500;font-style:italic;font-size:1.125rem;color:rgba(242,237,228,.6);max-width:30ch;line-height:1.4}
+.footer-tagline em{font-style:italic;color:var(--terracotta-light);font-weight:600}
+.footer-col-title{font-family:'JetBrains Mono',monospace;font-size:.65rem;text-transform:uppercase;letter-spacing:.1em;color:var(--terracotta-light);margin-bottom:1.25rem}
+.footer-col ul{list-style:none;padding:0;display:flex;flex-direction:column;gap:.625rem}
+.footer-col li a{color:rgba(242,237,228,.7);text-decoration:none;font-family:'Inter Tight',sans-serif;font-size:.95rem;transition:color .25s}
+.footer-col li a:hover{color:var(--terracotta-light)}
+.footer-bottom{padding-top:2rem;display:flex;justify-content:space-between;align-items:center;font-family:'JetBrains Mono',monospace;font-size:.6rem;text-transform:uppercase;letter-spacing:.08em;color:rgba(242,237,228,.4);flex-wrap:wrap;gap:1rem}
+.footer-updated{display:flex;align-items:center;gap:.5rem}
+.footer-updated::before{content:'';width:6px;height:6px;background:var(--terracotta-light);border-radius:50%;display:inline-block}
+@media(max-width:760px){.footer-grid{grid-template-columns:1fr 1fr;gap:2rem}}
+
+@media (prefers-reduced-motion:reduce){*,::before,::after{animation:none!important;transition:none!important}}
+</style>
+</head>
+<body>
+
+<nav class="nav">
+    <a href="../index.html#top" class="nav-logo"><img src="../assets/m-one-logo.png" alt="m.one"></a>
+    <div class="nav-links">
+        <a href="../index.html#trabajo">Trabajo</a>
+        <a href="../index.html#filosofia">Filosofía</a>
+        <a href="../index.html#metodo">Método</a>
+        <a href="../index.html#notas">Notas</a>
+        <a href="../index.html#sobre">Sobre</a>
+    </div>
+    <a href="../index.html#hablamos" class="nav-cta">Hablamos →</a>
+</nav>
+
+<!-- HEADER -->
+<header class="case-header">
+    <div class="container">
+        <div class="crumbs">
+            <a href="../index.html#top">m.one</a>
+            <span class="sep">/</span>
+            <a href="../index.html#trabajo">Trabajo</a>
+            <span class="sep">/</span>
+            <span class="current">KHORA</span>
+        </div>
+
+        <div class="case-eyebrow">Caso · Marca y estrategia · Sept 2025</div>
+        <h1 class="case-title">KHORA — la comida tratada<br>como <em>streetwear.</em></h1>
+        <p class="case-sub">Branding completo para un nuevo concepto de comida sana que tenía que huir del cliché verde y construir deseo desde cero.</p>
+    </div>
+
+    <!-- HERO IMAGE -->
+    <div class="container">
+        <div class="case-hero-img">
+            <img src="https://framerusercontent.com/images/7IbXLMU4qTtA3IVI6rbgDLjEbM.png" alt="KHORA — identidad de marca">
+        </div>
+    </div>
+
+    <!-- META -->
+    <div class="container">
+        <div class="case-meta">
+            <div class="case-meta-item">
+                <span class="case-meta-label">Cliente</span>
+                <span class="case-meta-value">KHORA</span>
+            </div>
+            <div class="case-meta-item">
+                <span class="case-meta-label">Sector</span>
+                <span class="case-meta-value">Hostelería · Healthy</span>
+            </div>
+            <div class="case-meta-item">
+                <span class="case-meta-label">Año</span>
+                <span class="case-meta-value">2025</span>
+            </div>
+            <div class="case-meta-item">
+                <span class="case-meta-label">Rol</span>
+                <span class="case-meta-value">Head of Branding</span>
+            </div>
+            <div class="case-meta-item">
+                <span class="case-meta-label">Entregables</span>
+                <span class="case-meta-value">Identidad · Packaging · App · Cartelería</span>
+            </div>
+        </div>
+    </div>
+</header>
+
+<!-- 01 EL RETO -->
+<section class="section">
+    <div class="container">
+        <div class="section-grid">
+            <div>
+                <div class="section-num">01</div>
+                <div class="section-label">— El reto</div>
+            </div>
+            <div class="section-content">
+                <h2>Una marca de comida sana que <em>no fuera otra marca verde.</em></h2>
+                <p>KHORA llegaba al mercado con un objetivo difícil: ser una marca de comida saludable que no se confundiera con todas las demás. El cliente <strong>no quería el típico restaurante verde y aburrido</strong> que define el sector. Quería algo urbano. Exclusivo. Con personalidad.</p>
+                <p>El brief era claro: alejarse del bowl con quinoa y acercar la marca <em>al mundo de la moda</em>. Construir deseo, no transmitir nutrición.</p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- IMAGE BREAK -->
+<div class="container">
+    <div class="image-block">
+        <img src="https://framerusercontent.com/images/D4gFfSH9rvqZeiim5jTak1gN80.jpg" alt="KHORA — sistema de marca aplicado">
+        <div class="image-caption">
+            <span class="desc">— Sistema de marca aplicado</span>
+            <span class="meta">KHORA · 2025</span>
+        </div>
+    </div>
+</div>
+
+<!-- 02 LA ESTRATEGIA -->
+<section class="section">
+    <div class="container">
+        <div class="section-grid">
+            <div>
+                <div class="section-num">02</div>
+                <div class="section-label">— La estrategia</div>
+            </div>
+            <div class="section-content">
+                <h2>Tratar la comida como <em>streetwear.</em></h2>
+                <p>La decisión estratégica fue clara: <strong>KHORA no vende ensaladas — lanza Drops.</strong> El concepto fusionó el mundo saludable con la estética industrial y la cultura urbana.</p>
+                <p>Las marcas de streetwear no venden ropa porque la ropa sea mejor. Venden actitud, identidad, pertenencia. KHORA aplica esa misma lógica al producto saludable: <em>no comunica nutrición. Comunica deseo.</em></p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- IMAGE GRID 2 -->
+<div class="container">
+    <div class="image-grid-2">
+        <img src="https://framerusercontent.com/images/VIY8QfNRKCfBfP13fdgVJokvh0.jpg" alt="KHORA — packaging">
+        <img src="https://framerusercontent.com/images/MFmOosS0pYJQq8MWUg0Qe3zUt9w.jpg" alt="KHORA — comunicación">
+    </div>
+</div>
+
+<!-- 03 IDENTIDAD -->
+<section class="section">
+    <div class="container">
+        <div class="section-grid">
+            <div>
+                <div class="section-num">03</div>
+                <div class="section-label">— Identidad visual</div>
+            </div>
+            <div class="section-content">
+                <h2>Un sistema visual que <em>rompe con todo lo esperado</em> en el sector.</h2>
+                <p>Logotipo técnico y robusto. Paleta de alto contraste — negro absoluto, blanco y naranja industrial. Tipografías que parecen sacadas de un manual de ingeniería para darle un aspecto crudo, casi obrero.</p>
+                <p>El resultado: una marca que parece más una <strong>etiqueta de ropa premium</strong> que un restaurante. Que es exactamente el efecto que se buscaba.</p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- IMAGE BREAK -->
+<div class="container">
+    <div class="image-block">
+        <img src="https://framerusercontent.com/images/PD5w4E8ZsWKaya3KJzpGv0hW4.jpg" alt="KHORA — identidad visual aplicada">
+        <div class="image-caption">
+            <span class="desc">— Aplicación cromática del sistema</span>
+            <span class="meta">Negro · Blanco · Naranja industrial</span>
+        </div>
+    </div>
+</div>
+
+<!-- 04 ATERRIZAJE -->
+<section class="section">
+    <div class="container">
+        <div class="section-grid">
+            <div>
+                <div class="section-num">04</div>
+                <div class="section-label">— Aterrizaje en soportes</div>
+            </div>
+            <div class="section-content">
+                <h2>La marca aterrizada hasta <em>el último detalle.</em></h2>
+                <p>Una identidad solo funciona cuando se aplica con coherencia en todos los puntos de contacto. KHORA se llevó al packaging — cajas de cartón con bridas naranjas, codificación tipo industrial. A los uniformes — clave Utility Wear, ropa de trabajo que se siente como streetwear.</p>
+                <p>A la cartelería del local. Y a la interfaz de la app de pedidos, diseñada en Dark Mode para mantener el código visual hasta en el móvil del cliente.</p>
+                <p><strong>Cada punto de contacto siente de la misma marca.</strong> Eso es lo que hace que KHORA pase de ser un restaurante a ser una identidad cultural.</p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- IMAGE GRID 2 -->
+<div class="container">
+    <div class="image-grid-2">
+        <img src="https://framerusercontent.com/images/hFUBHlyMiMrWAnC6z0VkvGPkbic.jpg" alt="KHORA — app interfaz dark mode">
+        <img src="https://framerusercontent.com/images/HpiGptWEqStxpreCKibkKTbmR0.jpg" alt="KHORA — comunicación móvil">
+    </div>
+</div>
+
+<div class="container">
+    <div class="image-block">
+        <img src="https://framerusercontent.com/images/27S8imptz6BYsBYMNwfGryg8aY.jpg" alt="KHORA — sistema completo">
+        <div class="image-caption">
+            <span class="desc">— Sistema completo aplicado</span>
+            <span class="meta">Identidad · Packaging · UI · Wearables</span>
+        </div>
+    </div>
+</div>
+
+<!-- BAND QUOTE -->
+<div class="case-band">
+    <div class="container case-band-content">
+        <div class="case-band-eyebrow">— El hilo</div>
+        <p class="case-band-quote">El streetwear no vendió ropa porque la ropa fuera mejor. <em>Vendió actitud.</em><br>KHORA hace lo mismo con la comida.</p>
+    </div>
+</div>
+
+<!-- 05 CIERRE -->
+<section class="section">
+    <div class="container">
+        <div class="section-grid">
+            <div>
+                <div class="section-num">05</div>
+                <div class="section-label">— El resultado</div>
+            </div>
+            <div class="section-content">
+                <h2>Una marca que <em>no se confunde con ninguna otra</em> del sector.</h2>
+                <p>Lo que diferencia a KHORA no es el producto — es la forma en que la marca cuenta lo que es. Cuando entras a un local KHORA, no estás eligiendo entre ensaladas. Estás entrando en un universo cultural concreto.</p>
+                <p>Esa diferencia entre <strong>elegir un producto y entrar en un universo</strong> es exactamente la frontera entre la comoditización y la marca. Y es donde se decide si una empresa cobra el precio justo o el precio premium.</p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- NEXT CASE -->
+<section class="next-case">
+    <div class="container-narrow">
+        <div class="next-eyebrow">— Siguiente caso</div>
+        <a href="sk-glass.html" class="next-case-link">
+            <h3 class="next-case-name">SK GLASS — un lanzamiento <em>técnico.</em></h3>
+            <p class="next-case-brief">Dirección visual completa de un lanzamiento B2B en el sector arquitectura.</p>
+            <span class="next-case-arrow">Ver caso</span>
+        </a>
+    </div>
+</section>
+
+<!-- BOOKING CTA -->
+<section class="case-booking">
+    <div class="container case-booking-content">
+        <div class="case-booking-eyebrow">— Hablamos</div>
+        <h2>¿Tu marca está dando todo<br>lo que <em>podría dar?</em></h2>
+        <p>Una conversación honesta sobre tu marca, tu contexto y por dónde empezar. Sin pitch. Sin presión.</p>
+        <button class="case-booking-btn" data-cal-namespace="llamada-inicial-30min" data-cal-link="m.one.studio/llamada-inicial-30min" data-cal-config='{"layout":"month_view"}'>Reservar llamada</button>
+    </div>
+</section>
+
+<!-- FOOTER -->
+<footer class="footer">
+    <div class="container">
+        <div class="footer-grid">
+            <div>
+                <div class="footer-brand-logo"><img src="../assets/m-one-logo.png" alt="m.one" style="filter:brightness(0) invert(1)"></div>
+                <p class="footer-tagline">Estrategia <em>primero.</em><br>Lo demás, después.</p>
+            </div>
+            <div class="footer-col">
+                <div class="footer-col-title">— Estudio</div>
+                <ul>
+                    <li><a href="../index.html#trabajo">Trabajo</a></li>
+                    <li><a href="../index.html#filosofia">Filosofía</a></li>
+                    <li><a href="../index.html#metodo">Método</a></li>
+                    <li><a href="../index.html#sobre">Sobre</a></li>
+                </ul>
+            </div>
+            <div class="footer-col">
+                <div class="footer-col-title">— Contenido</div>
+                <ul>
+                    <li><a href="../index.html#notas">Notas</a></li>
+                    <li><a href="https://instagram.com/m.one.studio" target="_blank" rel="noopener">Instagram</a></li>
+                    <li><a href="https://linkedin.com/company/m-one-studio" target="_blank" rel="noopener">LinkedIn</a></li>
+                </ul>
+            </div>
+            <div class="footer-col">
+                <div class="footer-col-title">— Contacto</div>
+                <ul>
+                    <li><a href="mailto:hello@m-one.studio">hello@m-one.studio</a></li>
+                    <li><a href="../index.html#hablamos">Reservar llamada</a></li>
+                </ul>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <span>© 2026 · m.one studio · Christian Martos</span>
+            <span class="footer-updated">Última actualización: 29 abril 2026</span>
+            <span>Made with criterio in <em style="color:var(--terracotta-light);font-weight:600">España</em></span>
+        </div>
+    </div>
+</footer>
+
+</body>
+</html>

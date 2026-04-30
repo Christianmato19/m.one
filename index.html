@@ -1,1434 +1,584 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>m.one — Estrategia primero</title>
-    <meta name="description" content="Marca, marketing y posicionamiento. Estrategia primero. m.one.">
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter+Tight:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,400;1,500;1,600;1,700&family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
-    <style>
-        * { margin: 0; padding: 0; box-sizing: border-box; }
-
-        :root {
-            --cream: #F4EFE6;
-            --cream-soft: #EDE5D4;
-            --cream-deep: #E0D5BE;
-            --black: #1A1714;
-            --black-soft: #2A2520;
-            --terracotta: #B15B20;
-            --terracotta-light: #D4763A;
-            --terracotta-dark: #8A4418;
-            --warm-gray: #6A5F52;
-            --warm-gray-soft: #9A8E7E;
-            --border-soft: rgba(26, 23, 20, 0.08);
-            --border: rgba(26, 23, 20, 0.15);
-            --border-strong: rgba(26, 23, 20, 0.25);
-        }
-
-        html { scroll-behavior: smooth; -webkit-font-smoothing: antialiased; -moz-osx-font-smoothing: grayscale; }
-
-        body {
-            font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
-            background: var(--cream);
-            color: var(--black);
-            font-weight: 400;
-            line-height: 1.5;
-            overflow-x: hidden;
-        }
-
-        ::selection { background: var(--terracotta); color: var(--cream); }
-
-        body::before {
-            content: '';
-            position: fixed;
-            inset: 0;
-            pointer-events: none;
-            z-index: 9999;
-            opacity: 0.035;
-            background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='3'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
-        }
-
-        /* NAV */
-        .nav {
-            position: fixed;
-            top: 1.25rem;
-            left: 50%;
-            transform: translateX(-50%);
-            padding: 0.5rem 0.5rem 0.5rem 1.25rem;
-            background: rgba(244, 239, 230, 0.85);
-            backdrop-filter: blur(24px) saturate(180%);
-            -webkit-backdrop-filter: blur(24px) saturate(180%);
-            border: 1px solid var(--border);
-            border-radius: 100px;
-            z-index: 1000;
-            display: flex;
-            align-items: center;
-            gap: 2.5rem;
-        }
-
-        .nav-logo { display: flex; align-items: center; gap: 0.625rem; text-decoration: none; color: var(--black); }
-        .nav-logo img { height: 28px; width: auto; filter: brightness(0); }
-        .nav-logo-mark { font-family: 'JetBrains Mono', monospace; font-size: 0.7rem; color: var(--warm-gray); text-transform: uppercase; letter-spacing: 0.08em; }
-        .nav-links { display: flex; gap: 1.75rem; align-items: center; }
-        .nav-link { font-family: 'JetBrains Mono', monospace; font-size: 0.65rem; color: var(--warm-gray); text-decoration: none; text-transform: uppercase; letter-spacing: 0.08em; transition: color 0.2s; }
-        .nav-link:hover { color: var(--black); }
-        .nav-cta {
-            font-family: 'Inter Tight', sans-serif;
-            font-weight: 600;
-            font-size: 0.8125rem;
-            background: var(--terracotta);
-            color: var(--cream);
-            padding: 0.625rem 1rem;
-            border-radius: 100px;
-            text-decoration: none;
-            letter-spacing: -0.01em;
-            transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
-        }
-        .nav-cta:hover { background: var(--terracotta-light); transform: translateY(-1px); }
-        @media (max-width: 900px) { .nav { gap: 1rem; padding: 0.5rem 0.5rem 0.5rem 1rem; } .nav-links { display: none; } }
-
-        .container { max-width: 1320px; margin: 0 auto; padding: 0 2.5rem; }
-        @media (max-width: 768px) { .container { padding: 0 1.25rem; } }
-
-        /* HERO */
-        .hero {
-            min-height: 100vh;
-            display: flex;
-            align-items: center;
-            padding: 9rem 0 4rem;
-            position: relative;
-            overflow: hidden;
-        }
-
-        .hero-grid {
-            display: grid;
-            grid-template-columns: 1.4fr 1fr;
-            gap: 4rem;
-            width: 100%;
-            align-items: center;
-        }
-
-        @media (max-width: 900px) {
-            .hero-grid { grid-template-columns: 1fr; gap: 3rem; }
-        }
-
-        .hero-content { display: flex; flex-direction: column; gap: 2rem; }
-
-        .hero-meta {
-            display: flex;
-            gap: 2.5rem;
-            flex-wrap: wrap;
-            padding-bottom: 1.5rem;
-            border-bottom: 1px solid var(--border);
-        }
-        .hero-meta-item { display: flex; flex-direction: column; gap: 0.25rem; }
-        .hero-meta-label { font-family: 'JetBrains Mono', monospace; font-size: 0.65rem; color: var(--warm-gray-soft); text-transform: uppercase; letter-spacing: 0.08em; }
-        .hero-meta-value { font-family: 'Inter Tight', sans-serif; font-weight: 500; font-size: 0.875rem; color: var(--black); letter-spacing: -0.01em; }
-
-        .hero-status {
-            display: inline-flex;
-            align-items: center;
-            gap: 0.5rem;
-            padding: 0.5rem 0.875rem;
-            background: rgba(26, 23, 20, 0.04);
-            border: 1px solid var(--border);
-            border-radius: 100px;
-            font-family: 'JetBrains Mono', monospace;
-            font-size: 0.65rem;
-            text-transform: uppercase;
-            letter-spacing: 0.08em;
-            color: var(--warm-gray);
-            align-self: flex-start;
-        }
-
-        .status-dot {
-            width: 6px;
-            height: 6px;
-            background: #4A8B3F;
-            border-radius: 50%;
-            box-shadow: 0 0 0 0 rgba(74, 139, 63, 0.4);
-            animation: pulse 2s infinite;
-        }
-
-        @keyframes pulse {
-            0% { box-shadow: 0 0 0 0 rgba(74, 139, 63, 0.4); }
-            70% { box-shadow: 0 0 0 6px rgba(74, 139, 63, 0); }
-            100% { box-shadow: 0 0 0 0 rgba(74, 139, 63, 0); }
-        }
-
-        .hero-title {
-            font-family: 'Inter Tight', sans-serif;
-            font-weight: 800;
-            font-size: clamp(3rem, 8.5vw, 7.5rem);
-            line-height: 0.94;
-            letter-spacing: -0.045em;
-            color: var(--black);
-        }
-
-        .hero-title em {
-            font-style: italic;
-            color: var(--terracotta);
-            font-weight: 700;
-            position: relative;
-            display: inline-block;
-        }
-
-        .hero-title em::after {
-            content: '';
-            position: absolute;
-            bottom: 0.06em;
-            left: 0;
-            right: 0;
-            height: 0.05em;
-            background: var(--terracotta);
-            transform-origin: left;
-            animation: drawLine 1s cubic-bezier(0.16, 1, 0.3, 1) 1.2s both;
-        }
-
-        @keyframes drawLine { from { transform: scaleX(0); } to { transform: scaleX(1); } }
-
-        .hero-description {
-            font-size: clamp(1rem, 1.3vw, 1.1875rem);
-            line-height: 1.55;
-            color: var(--warm-gray);
-            font-weight: 400;
-            max-width: 540px;
-        }
-
-        .hero-description strong { color: var(--black); font-weight: 500; }
-
-        .hero-cta-row { display: flex; gap: 1.5rem; align-items: center; flex-wrap: wrap; }
-
-        .btn-primary {
-            display: inline-flex;
-            align-items: center;
-            gap: 0.625rem;
-            background: var(--terracotta);
-            color: var(--cream);
-            font-family: 'Inter Tight', sans-serif;
-            font-weight: 600;
-            font-size: 0.9375rem;
-            letter-spacing: -0.01em;
-            padding: 1rem 1.5rem;
-            border-radius: 100px;
-            text-decoration: none;
-            border: none;
-            cursor: pointer;
-            transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
-        }
-        .btn-primary:hover { background: var(--terracotta-light); transform: translateY(-2px); box-shadow: 0 12px 32px -8px rgba(177, 91, 32, 0.3); }
-
-        .btn-secondary {
-            display: inline-flex;
-            align-items: center;
-            gap: 0.5rem;
-            background: transparent;
-            color: var(--warm-gray);
-            font-family: 'JetBrains Mono', monospace;
-            font-size: 0.7rem;
-            text-transform: uppercase;
-            letter-spacing: 0.08em;
-            text-decoration: none;
-            transition: color 0.2s;
-        }
-        .btn-secondary:hover { color: var(--black); }
-        .arrow-icon { width: 14px; height: 14px; transition: transform 0.3s; }
-        .btn-primary:hover .arrow-icon, .btn-secondary:hover .arrow-icon { transform: translateX(3px); }
-
-        /* Hero visual — terracotta square with logo */
-        .hero-visual {
-            background: var(--terracotta);
-            aspect-ratio: 1;
-            border-radius: 4px;
-            position: relative;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            overflow: hidden;
-        }
-        .hero-visual::before {
-            content: '';
-            position: absolute;
-            inset: 0;
-            background: radial-gradient(circle at 25% 15%, rgba(255,255,255,0.18) 0%, transparent 55%);
-            pointer-events: none;
-        }
-        .hero-visual img { width: 65%; max-width: 340px; height: auto; position: relative; z-index: 1; filter: brightness(0) invert(1); }
-
-        .hero-visual-corner {
-            position: absolute;
-            font-family: 'JetBrains Mono', monospace;
-            font-size: 0.65rem;
-            color: rgba(244, 239, 230, 0.7);
-            text-transform: uppercase;
-            letter-spacing: 0.1em;
-        }
-        .hero-visual-corner.tl { top: 1.25rem; left: 1.25rem; }
-        .hero-visual-corner.tr { top: 1.25rem; right: 1.25rem; }
-        .hero-visual-corner.bl { bottom: 1.25rem; left: 1.25rem; }
-        .hero-visual-corner.br { bottom: 1.25rem; right: 1.25rem; }
-
-        /* MARQUEE */
-        .marquee {
-            background: var(--cream-deep);
-            border-top: 1px solid var(--border);
-            border-bottom: 1px solid var(--border);
-            overflow: hidden;
-            padding: 1.5rem 0;
-        }
-        .marquee-track {
-            display: flex;
-            gap: 4rem;
-            white-space: nowrap;
-            animation: marquee 38s linear infinite;
-            width: max-content;
-        }
-        .marquee-item {
-            display: flex;
-            align-items: center;
-            gap: 4rem;
-            font-family: 'Inter Tight', sans-serif;
-            font-weight: 500;
-            font-size: clamp(1.125rem, 1.5vw, 1.5rem);
-            letter-spacing: -0.01em;
-            color: var(--black);
-        }
-        .marquee-item span { display: inline-flex; align-items: center; gap: 4rem; }
-        .marquee-dot { width: 6px; height: 6px; background: var(--terracotta); border-radius: 50%; flex-shrink: 0; }
-        .marquee-em { font-style: italic; color: var(--terracotta); font-weight: 600; }
-        @keyframes marquee {
-            from { transform: translateX(0); }
-            to { transform: translateX(-50%); }
-        }
-
-        /* SECTIONS */
-        .section { padding: 9rem 0; position: relative; }
-        @media (max-width: 768px) { .section { padding: 5.5rem 0; } }
-
-        .section-eyebrow-row {
-            display: flex;
-            justify-content: space-between;
-            align-items: baseline;
-            padding-bottom: 2rem;
-            margin-bottom: 5rem;
-            flex-wrap: wrap;
-            gap: 1rem;
-            border-bottom: 1px solid var(--border);
-        }
-        .section-tag {
-            font-family: 'JetBrains Mono', monospace;
-            font-size: 0.7rem;
-            text-transform: uppercase;
-            letter-spacing: 0.08em;
-            color: var(--warm-gray);
-            display: flex;
-            align-items: center;
-            gap: 0.625rem;
-        }
-        .section-tag::before { content: ''; width: 6px; height: 6px; background: var(--terracotta); border-radius: 50%; }
-        .section-tag-right {
-            font-family: 'JetBrains Mono', monospace;
-            font-size: 0.65rem;
-            color: var(--warm-gray-soft);
-            text-transform: uppercase;
-            letter-spacing: 0.08em;
-        }
-
-        @media (max-width: 768px) { .section-eyebrow-row { margin-bottom: 3rem; } }
-
-        /* IDENTITY GRID */
-        .identity-intro {
-            font-family: 'Inter Tight', sans-serif;
-            font-weight: 700;
-            font-size: clamp(2rem, 4.5vw, 4rem);
-            line-height: 1.05;
-            letter-spacing: -0.04em;
-            color: var(--black);
-            max-width: 22ch;
-            margin-bottom: 5rem;
-        }
-        .identity-intro em { font-style: italic; color: var(--terracotta); font-weight: 600; }
-
-        .identity-grid {
-            display: grid;
-            grid-template-columns: repeat(2, 1fr);
-            gap: 1.25rem;
-        }
-        @media (max-width: 768px) { .identity-grid { grid-template-columns: 1fr; } }
-
-        .identity-cell {
-            aspect-ratio: 1;
-            border-radius: 4px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            padding: 4rem;
-            position: relative;
-            overflow: hidden;
-            transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1);
-        }
-        .identity-cell:hover { transform: translateY(-4px); }
-        .identity-cell img {
-            width: 50%;
-            max-width: 220px;
-            height: auto;
-            position: relative;
-            z-index: 1;
-            transition: transform 0.6s cubic-bezier(0.16, 1, 0.3, 1);
-        }
-        .identity-cell:hover img { transform: scale(1.04); }
-
-        .identity-cell-1 { background: var(--black); }
-        .identity-cell-2 { background: var(--cream-deep); border: 1px solid var(--border); }
-        .identity-cell-3 { background: var(--terracotta); }
-        .identity-cell-4 { background: var(--cream-soft); border: 1px solid var(--border); }
-
-        .identity-cell-1::before, .identity-cell-3::before {
-            content: '';
-            position: absolute;
-            inset: 0;
-            background: radial-gradient(circle at 25% 15%, rgba(255,255,255,0.12) 0%, transparent 55%);
-            pointer-events: none;
-        }
-
-        .identity-label {
-            position: absolute;
-            font-family: 'JetBrains Mono', monospace;
-            font-size: 0.65rem;
-            text-transform: uppercase;
-            letter-spacing: 0.1em;
-            z-index: 2;
-        }
-        .identity-label.tl { top: 1.25rem; left: 1.25rem; }
-        .identity-label.tr { top: 1.25rem; right: 1.25rem; }
-        .identity-cell-1 .identity-label { color: rgba(244, 239, 230, 0.5); }
-        .identity-cell-3 .identity-label { color: rgba(244, 239, 230, 0.7); }
-        .identity-cell-2 .identity-label, .identity-cell-4 .identity-label { color: var(--warm-gray); }
-
-        @media (max-width: 768px) {
-            .identity-cell { padding: 2.5rem; }
-        }
-
-        /* IDENTITY GRID END */
-
-        /* PHILOSOPHY — vertical list with huge numerals */
-        .philosophy-intro {
-            font-family: 'Inter Tight', sans-serif;
-            font-weight: 700;
-            font-size: clamp(2.25rem, 5vw, 4.5rem);
-            line-height: 1.05;
-            letter-spacing: -0.04em;
-            color: var(--black);
-            max-width: 22ch;
-            margin-bottom: 6rem;
-        }
-        .philosophy-intro em { font-style: italic; color: var(--terracotta); font-weight: 600; }
-        .philosophy-intro .strike { color: rgba(26, 23, 20, 0.25); text-decoration: line-through; text-decoration-thickness: 3px; text-decoration-color: rgba(26, 23, 20, 0.25); }
-
-        .principles {
-            display: flex;
-            flex-direction: column;
-            border-top: 1px solid var(--border);
-        }
-
-        .principle {
-            display: grid;
-            grid-template-columns: 1fr 2.4fr;
-            gap: 4rem;
-            padding: 4rem 0;
-            border-bottom: 1px solid var(--border);
-            align-items: start;
-            transition: padding-left 0.4s cubic-bezier(0.16, 1, 0.3, 1);
-        }
-
-        .principle:hover { padding-left: 1.5rem; }
-
-        .principle-num {
-            font-family: 'Inter Tight', sans-serif;
-            font-size: clamp(4rem, 7vw, 7rem);
-            font-weight: 700;
-            letter-spacing: -0.05em;
-            line-height: 0.85;
-            color: var(--terracotta);
-        }
-
-        .principle-num em {
-            font-style: italic;
-            font-weight: 500;
-        }
-
-        .principle-content { display: flex; flex-direction: column; gap: 1.25rem; max-width: 640px; padding-top: 0.5rem; }
-
-        .principle-title {
-            font-family: 'Inter Tight', sans-serif;
-            font-weight: 700;
-            font-size: clamp(1.5rem, 2.5vw, 2.25rem);
-            letter-spacing: -0.03em;
-            color: var(--black);
-            line-height: 1.05;
-        }
-
-        .principle-title em { font-style: italic; color: var(--terracotta); }
-
-        .principle-text {
-            font-size: 1.0625rem;
-            line-height: 1.6;
-            color: var(--warm-gray);
-        }
-
-        @media (max-width: 768px) {
-            .principle { grid-template-columns: 1fr; gap: 1.5rem; padding: 2.5rem 0; }
-            .principle:hover { padding-left: 0; }
-        }
-
-        /* MANIFESTO BAND — full-bleed terracotta */
-        .manifesto-band {
-            background: var(--terracotta);
-            color: var(--cream);
-            padding: 8rem 0;
-            text-align: center;
-            position: relative;
-            overflow: hidden;
-        }
-        .manifesto-band::before {
-            content: '';
-            position: absolute;
-            inset: 0;
-            background: radial-gradient(circle at 20% 30%, rgba(255,255,255,0.1) 0%, transparent 50%);
-        }
-        .manifesto-quote {
-            font-family: 'Inter Tight', sans-serif;
-            font-weight: 600;
-            font-style: italic;
-            font-size: clamp(2rem, 5vw, 4.5rem);
-            line-height: 1.05;
-            letter-spacing: -0.035em;
-            max-width: 22ch;
-            margin: 0 auto;
-            position: relative;
-            z-index: 1;
-        }
-        .manifesto-eyebrow {
-            font-family: 'JetBrains Mono', monospace;
-            font-size: 0.7rem;
-            color: rgba(244, 239, 230, 0.7);
-            text-transform: uppercase;
-            letter-spacing: 0.1em;
-            margin-bottom: 2.5rem;
-            position: relative;
-            z-index: 1;
-            display: inline-flex;
-            align-items: center;
-            gap: 0.625rem;
-        }
-        .manifesto-eyebrow::before, .manifesto-eyebrow::after {
-            content: '';
-            width: 24px;
-            height: 1px;
-            background: rgba(244, 239, 230, 0.4);
-        }
-
-        /* METHOD — 4 rows with hover padding-shift */
-        .method-intro {
-            font-family: 'Inter Tight', sans-serif;
-            font-weight: 700;
-            font-size: clamp(2rem, 4.5vw, 4rem);
-            line-height: 1.05;
-            letter-spacing: -0.04em;
-            color: var(--black);
-            max-width: 22ch;
-            margin-bottom: 5rem;
-        }
-        .method-intro em { font-style: italic; color: var(--terracotta); font-weight: 600; }
-
-        .method-list {
-            display: flex;
-            flex-direction: column;
-            border-top: 1px solid var(--border);
-        }
-
-        .method-row {
-            padding: 3rem 0;
-            border-bottom: 1px solid var(--border);
-            display: grid;
-            grid-template-columns: 100px 220px 1fr;
-            gap: 3rem;
-            align-items: start;
-            transition: padding-left 0.4s cubic-bezier(0.16, 1, 0.3, 1);
-            cursor: default;
-        }
-
-        .method-row:hover { padding-left: 1.5rem; }
-
-        .method-num {
-            font-family: 'JetBrains Mono', monospace;
-            font-size: 0.7rem;
-            color: var(--terracotta);
-            text-transform: uppercase;
-            letter-spacing: 0.08em;
-            padding-top: 0.5rem;
-        }
-
-        .method-step {
-            font-family: 'Inter Tight', sans-serif;
-            font-weight: 700;
-            font-style: italic;
-            font-size: clamp(1.5rem, 2.4vw, 2rem);
-            letter-spacing: -0.02em;
-            color: var(--black);
-            line-height: 1;
-        }
-
-        .method-text {
-            font-size: 1.0625rem;
-            line-height: 1.6;
-            color: var(--warm-gray);
-            max-width: 580px;
-        }
-
-        @media (max-width: 768px) {
-            .method-row { grid-template-columns: 1fr; gap: 1rem; padding: 2rem 0; }
-            .method-row:hover { padding-left: 0; }
-        }
-
-        /* ABOUT — black section */
-        .about-section {
-            background: var(--black);
-            color: var(--cream);
-            padding: 9rem 0;
-            position: relative;
-            overflow: hidden;
-        }
-        .about-section .section-tag { color: var(--warm-gray-soft); }
-        .about-section .section-tag-right { color: var(--warm-gray-soft); }
-        .about-section .section-eyebrow-row { border-bottom-color: rgba(244, 239, 230, 0.1); }
-
-        .about-grid {
-            display: grid;
-            grid-template-columns: 1fr 1.4fr;
-            gap: 5rem;
-            align-items: center;
-        }
-
-        @media (max-width: 768px) {
-            .about-grid { grid-template-columns: 1fr; gap: 3rem; }
-        }
-
-        .about-visual {
-            background: var(--terracotta);
-            aspect-ratio: 1;
-            border-radius: 4px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            padding: 3rem;
-            position: relative;
-            overflow: hidden;
-        }
-        .about-visual::before {
-            content: '';
-            position: absolute;
-            inset: 0;
-            background: radial-gradient(circle at 25% 15%, rgba(255,255,255,0.18) 0%, transparent 55%);
-        }
-        .about-visual img { width: 65%; max-width: 340px; position: relative; z-index: 1; filter: brightness(0) invert(1); }
-        .about-visual-corner {
-            position: absolute;
-            bottom: 1.25rem;
-            left: 1.25rem;
-            font-family: 'JetBrains Mono', monospace;
-            font-size: 0.65rem;
-            color: rgba(244, 239, 230, 0.6);
-            text-transform: uppercase;
-            letter-spacing: 0.1em;
-        }
-
-        .about-content h3 {
-            font-family: 'Inter Tight', sans-serif;
-            font-weight: 700;
-            font-size: clamp(1.75rem, 3.2vw, 2.75rem);
-            letter-spacing: -0.03em;
-            line-height: 1.1;
-            color: var(--cream);
-            margin-bottom: 2rem;
-        }
-        .about-content h3 em { font-style: italic; color: var(--terracotta-light); }
-        .about-content p {
-            font-size: 1.0625rem;
-            line-height: 1.65;
-            color: rgba(244, 239, 230, 0.7);
-            margin-bottom: 1.25rem;
-        }
-
-        .about-meta {
-            margin-top: 2.5rem;
-            padding-top: 2rem;
-            border-top: 1px solid rgba(244, 239, 230, 0.15);
-            display: grid;
-            grid-template-columns: repeat(2, 1fr);
-            gap: 1.5rem;
-        }
-        .about-meta-item { display: flex; flex-direction: column; gap: 0.25rem; }
-        .about-meta-label { font-family: 'JetBrains Mono', monospace; font-size: 0.65rem; color: var(--warm-gray-soft); text-transform: uppercase; letter-spacing: 0.08em; }
-        .about-meta-value { font-family: 'Inter Tight', sans-serif; font-weight: 600; font-size: 1rem; color: var(--cream); letter-spacing: -0.01em; }
-
-        /* BIG QUOTE */
-        .quote-section {
-            padding: 9rem 0;
-            text-align: center;
-            position: relative;
-        }
-        .quote-eyebrow {
-            font-family: 'JetBrains Mono', monospace;
-            font-size: 0.7rem;
-            color: var(--warm-gray);
-            text-transform: uppercase;
-            letter-spacing: 0.1em;
-            margin-bottom: 3rem;
-            display: inline-flex;
-            align-items: center;
-            gap: 0.625rem;
-        }
-        .quote-eyebrow::before, .quote-eyebrow::after {
-            content: '';
-            width: 24px;
-            height: 1px;
-            background: var(--border-strong);
-        }
-        .big-quote {
-            font-family: 'Inter Tight', sans-serif;
-            font-weight: 700;
-            font-size: clamp(2.5rem, 6vw, 5.5rem);
-            letter-spacing: -0.045em;
-            line-height: 1;
-            max-width: 16ch;
-            margin: 0 auto;
-            color: var(--black);
-        }
-        .big-quote em { font-style: italic; color: var(--terracotta); font-weight: 600; }
-
-        /* BOOKING */
-        .booking-intro {
-            font-family: 'Inter Tight', sans-serif;
-            font-weight: 700;
-            font-size: clamp(2rem, 4.5vw, 4rem);
-            line-height: 1.05;
-            letter-spacing: -0.04em;
-            color: var(--black);
-            max-width: 22ch;
-            margin-bottom: 5rem;
-        }
-        .booking-intro em { font-style: italic; color: var(--terracotta); font-weight: 600; }
-
-        .booking-split {
-            display: grid;
-            grid-template-columns: 0.85fr 1.2fr;
-            border: 1px solid var(--border);
-            border-radius: 4px;
-            overflow: hidden;
-            background: var(--cream-soft);
-        }
-
-        @media (max-width: 900px) {
-            .booking-split { grid-template-columns: 1fr; }
-        }
-
-        .booking-left {
-            background: var(--black);
-            color: var(--cream);
-            padding: 3rem;
-            display: flex;
-            flex-direction: column;
-            justify-content: space-between;
-            min-height: 100%;
-            position: relative;
-            overflow: hidden;
-        }
-        .booking-left::before {
-            content: '';
-            position: absolute;
-            inset: 0;
-            background: radial-gradient(circle at 80% 20%, rgba(177, 91, 32, 0.15) 0%, transparent 50%);
-        }
-
-        .booking-left-content { position: relative; z-index: 1; display: flex; flex-direction: column; gap: 1.25rem; }
-
-        .booking-left-eyebrow {
-            font-family: 'JetBrains Mono', monospace;
-            font-size: 0.65rem;
-            color: var(--terracotta-light);
-            text-transform: uppercase;
-            letter-spacing: 0.08em;
-        }
-
-        .booking-left-title {
-            font-family: 'Inter Tight', sans-serif;
-            font-weight: 700;
-            font-size: clamp(1.625rem, 2.4vw, 2.125rem);
-            letter-spacing: -0.025em;
-            line-height: 1.1;
-            color: var(--cream);
-        }
-        .booking-left-title em { font-style: italic; color: var(--terracotta-light); }
-
-        .booking-left-text {
-            font-size: 0.9375rem;
-            line-height: 1.6;
-            color: rgba(244, 239, 230, 0.65);
-        }
-
-        .booking-features {
-            display: flex;
-            flex-direction: column;
-            gap: 0.875rem;
-            margin-top: 2rem;
-            padding-top: 2rem;
-            border-top: 1px solid rgba(244, 239, 230, 0.15);
-            position: relative;
-            z-index: 1;
-        }
-
-        .booking-feature {
-            display: flex;
-            align-items: center;
-            gap: 0.75rem;
-            font-family: 'JetBrains Mono', monospace;
-            font-size: 0.7rem;
-            text-transform: uppercase;
-            letter-spacing: 0.06em;
-            color: rgba(244, 239, 230, 0.85);
-        }
-
-        .booking-feature-icon {
-            width: 18px;
-            height: 18px;
-            color: var(--terracotta-light);
-            flex-shrink: 0;
-        }
-
-        .booking-right {
-            background: var(--cream-soft);
-            padding: 2.5rem;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-        }
-
-        .booking-cta {
-            display: flex;
-            flex-direction: column;
-            align-items: flex-start;
-            text-align: left;
-            gap: 1.5rem;
-            width: 100%;
-            max-width: 440px;
-        }
-
-        .booking-cta-eyebrow {
-            font-family: 'JetBrains Mono', monospace;
-            font-size: 0.65rem;
-            color: var(--terracotta);
-            text-transform: uppercase;
-            letter-spacing: 0.08em;
-        }
-
-        .booking-cta-icon {
-            width: 76px;
-            height: 76px;
-            border-radius: 100px;
-            background: var(--terracotta);
-            color: var(--cream);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            box-shadow: 0 12px 32px -8px rgba(177, 91, 32, 0.35);
-        }
-
-        .booking-cta-title {
-            font-family: 'Inter Tight', sans-serif;
-            font-weight: 700;
-            font-size: clamp(1.625rem, 2.6vw, 2.25rem);
-            letter-spacing: -0.025em;
-            line-height: 1.05;
-            color: var(--black);
-        }
-        .booking-cta-title em { font-style: italic; color: var(--terracotta); font-weight: 600; }
-
-        .booking-cta-text {
-            font-size: 1rem;
-            line-height: 1.6;
-            color: var(--warm-gray);
-            max-width: 380px;
-        }
-
-        .booking-cta-btn {
-            display: inline-flex;
-            align-items: center;
-            gap: 0.625rem;
-            background: var(--black);
-            color: var(--cream);
-            font-family: 'Inter Tight', sans-serif;
-            font-weight: 600;
-            font-size: 1rem;
-            letter-spacing: -0.01em;
-            padding: 1.125rem 1.75rem;
-            border-radius: 100px;
-            border: none;
-            cursor: pointer;
-            transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
-        }
-        .booking-cta-btn:hover {
-            background: var(--terracotta);
-            transform: translateY(-2px);
-            box-shadow: 0 12px 32px -8px rgba(177, 91, 32, 0.4);
-        }
-        .booking-cta-btn:hover .arrow-icon { transform: translateX(3px); }
-
-        .booking-cta-meta {
-            display: flex;
-            flex-direction: column;
-            gap: 0.5rem;
-            margin-top: 0.5rem;
-            padding-top: 1.5rem;
-            border-top: 1px solid var(--border);
-            width: 100%;
-        }
-        .booking-cta-meta-item {
-            display: flex;
-            align-items: center;
-            gap: 0.625rem;
-            font-family: 'JetBrains Mono', monospace;
-            font-size: 0.7rem;
-            color: var(--warm-gray);
-            text-transform: uppercase;
-            letter-spacing: 0.06em;
-        }
-        .booking-cta-meta-item svg { color: var(--terracotta); flex-shrink: 0; }
-
-        @media (max-width: 768px) {
-            .booking-right { padding: 2rem 1.5rem; }
-            .booking-cta-icon { width: 64px; height: 64px; }
-        }
-        /* end booking-cta */
-
-        .booking-step-label { display: flex; align-items: center; gap: 0.75rem; font-family: 'JetBrains Mono', monospace; font-size: 0.65rem; color: var(--warm-gray); text-transform: uppercase; letter-spacing: 0.08em; margin-bottom: 1.5rem; }
-        .booking-step-num { display: inline-flex; align-items: center; justify-content: center; width: 22px; height: 22px; border: 1px solid var(--border-strong); border-radius: 50%; font-size: 0.6rem; color: var(--black); }
-        .booking-step-num.active { background: var(--terracotta); border-color: var(--terracotta); color: var(--cream); }
-
-        .calendar-nav { display: flex; justify-content: space-between; align-items: center; margin-bottom: 1.5rem; }
-        .calendar-month { font-family: 'Inter Tight', sans-serif; font-weight: 600; font-size: 1.125rem; letter-spacing: -0.01em; color: var(--black); }
-        .calendar-arrows { display: flex; gap: 0.375rem; }
-        .calendar-arrow { width: 34px; height: 34px; border: 1px solid var(--border); background: transparent; color: var(--black); border-radius: 50%; cursor: pointer; display: inline-flex; align-items: center; justify-content: center; transition: all 0.2s; }
-        .calendar-arrow:hover:not(:disabled) { background: var(--cream); border-color: var(--border-strong); }
-        .calendar-arrow:disabled { opacity: 0.3; cursor: not-allowed; }
-
-        .calendar-grid { display: grid; grid-template-columns: repeat(7, 1fr); gap: 0.4rem; margin-bottom: 2rem; }
-        .calendar-day-label { font-family: 'JetBrains Mono', monospace; font-size: 0.6rem; color: var(--warm-gray-soft); text-transform: uppercase; letter-spacing: 0.08em; text-align: center; padding: 0.5rem 0; }
-        .calendar-day {
-            aspect-ratio: 1;
-            background: var(--cream);
-            border: 1px solid var(--border-soft);
-            border-radius: 8px;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            justify-content: center;
-            cursor: pointer;
-            transition: all 0.2s cubic-bezier(0.16, 1, 0.3, 1);
-            position: relative;
-            font-family: 'Inter Tight', sans-serif;
-            font-weight: 600;
-            color: var(--black);
-            font-size: 0.95rem;
-        }
-        .calendar-day:hover:not(.disabled):not(.selected) { background: var(--cream-deep); border-color: var(--border); transform: translateY(-2px); }
-        .calendar-day.disabled { opacity: 0.3; cursor: not-allowed; }
-        .calendar-day.empty { background: transparent; border: none; cursor: default; }
-        .calendar-day.today { border-color: var(--terracotta); }
-        .calendar-day.today::after { content: ''; position: absolute; bottom: 5px; width: 3px; height: 3px; border-radius: 50%; background: var(--terracotta); }
-        .calendar-day.selected { background: var(--terracotta); border-color: var(--terracotta); color: var(--cream); }
-        .calendar-day.selected::after { background: var(--cream); }
-        .calendar-day-num { font-size: 0.95rem; line-height: 1; }
-        .calendar-day-dots { display: flex; gap: 2px; margin-top: 4px; height: 3px; }
-        .calendar-day-dot { width: 3px; height: 3px; background: var(--terracotta); border-radius: 50%; opacity: 0.6; }
-        .calendar-day.disabled .calendar-day-dot { display: none; }
-        .calendar-day.selected .calendar-day-dot { background: var(--cream); opacity: 1; }
-
-        .time-slots { display: grid; grid-template-columns: repeat(auto-fill, minmax(120px, 1fr)); gap: 0.625rem; margin-bottom: 2rem; opacity: 0; max-height: 0; overflow: hidden; transition: opacity 0.4s ease, max-height 0.4s ease, margin-bottom 0.4s ease; }
-        .time-slots.visible { opacity: 1; max-height: 500px; }
-        .time-slot {
-            background: var(--cream);
-            border: 1px solid var(--border-soft);
-            border-radius: 8px;
-            padding: 0.875rem;
-            cursor: pointer;
-            transition: all 0.2s cubic-bezier(0.16, 1, 0.3, 1);
-            display: flex;
-            flex-direction: column;
-            gap: 0.25rem;
-            align-items: center;
-            font-family: 'Inter Tight', sans-serif;
-        }
-        .time-slot:hover:not(.disabled):not(.selected) { background: var(--cream-deep); border-color: var(--border); transform: translateY(-2px); }
-        .time-slot.selected { background: var(--terracotta); border-color: var(--terracotta); color: var(--cream); }
-        .time-slot.disabled { opacity: 0.3; cursor: not-allowed; }
-        .time-slot-time { font-weight: 600; font-size: 0.95rem; letter-spacing: -0.01em; color: var(--black); }
-        .time-slot.selected .time-slot-time { color: var(--cream); }
-        .time-slot-duration { font-family: 'JetBrains Mono', monospace; font-size: 0.6rem; color: var(--warm-gray-soft); text-transform: uppercase; letter-spacing: 0.05em; }
-        .time-slot.selected .time-slot-duration { color: rgba(244, 239, 230, 0.8); }
-
-        .booking-form { display: none; flex-direction: column; gap: 1rem; padding-top: 2rem; border-top: 1px solid var(--border); }
-        .booking-form.visible { display: flex; animation: slideUp 0.4s cubic-bezier(0.16, 1, 0.3, 1); }
-        @keyframes slideUp { from { opacity: 0; transform: translateY(12px); } to { opacity: 1; transform: translateY(0); } }
-        .booking-form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; }
-        @media (max-width: 600px) { .booking-form-row { grid-template-columns: 1fr; } }
-
-        .form-field { display: flex; flex-direction: column; gap: 0.5rem; }
-        .form-label { font-family: 'JetBrains Mono', monospace; font-size: 0.65rem; color: var(--warm-gray); text-transform: uppercase; letter-spacing: 0.08em; }
-        .form-input, .form-textarea {
-            background: var(--cream);
-            border: 1px solid var(--border);
-            border-radius: 8px;
-            padding: 0.875rem 1rem;
-            color: var(--black);
-            font-family: 'Inter', sans-serif;
-            font-size: 0.9375rem;
-            transition: all 0.2s;
-            outline: none;
-        }
-        .form-input:focus, .form-textarea:focus { border-color: var(--terracotta); }
-        .form-input::placeholder, .form-textarea::placeholder { color: var(--warm-gray-soft); }
-        .form-textarea { resize: vertical; min-height: 100px; font-family: inherit; }
-
-        .booking-summary { background: rgba(177, 91, 32, 0.08); border: 1px solid rgba(177, 91, 32, 0.25); border-radius: 8px; padding: 1.25rem; display: flex; justify-content: space-between; align-items: center; margin-bottom: 1rem; }
-        .booking-summary-info { display: flex; flex-direction: column; gap: 0.25rem; }
-        .booking-summary-label { font-family: 'JetBrains Mono', monospace; font-size: 0.6rem; color: var(--terracotta); text-transform: uppercase; letter-spacing: 0.08em; }
-        .booking-summary-text { font-family: 'Inter Tight', sans-serif; font-weight: 600; font-size: 1rem; color: var(--black); letter-spacing: -0.01em; }
-
-        .form-submit {
-            display: inline-flex;
-            align-items: center;
-            justify-content: center;
-            gap: 0.625rem;
-            background: var(--terracotta);
-            color: var(--cream);
-            font-family: 'Inter Tight', sans-serif;
-            font-weight: 600;
-            font-size: 1rem;
-            letter-spacing: -0.01em;
-            padding: 1.125rem 1.5rem;
-            border-radius: 100px;
-            border: none;
-            cursor: pointer;
-            transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
-            margin-top: 0.5rem;
-        }
-        .form-submit:hover { background: var(--terracotta-light); transform: translateY(-2px); box-shadow: 0 12px 32px -8px rgba(177, 91, 32, 0.3); }
-
-        .booking-confirmed { display: none; text-align: center; padding: 3rem 1.5rem; animation: slideUp 0.5s cubic-bezier(0.16, 1, 0.3, 1); }
-        .booking-confirmed.visible { display: block; }
-        .confirmed-icon { width: 56px; height: 56px; border-radius: 50%; background: var(--terracotta); color: var(--cream); display: flex; align-items: center; justify-content: center; margin: 0 auto 2rem; }
-        .confirmed-title { font-family: 'Inter Tight', sans-serif; font-weight: 800; font-size: clamp(1.75rem, 3.5vw, 2.5rem); letter-spacing: -0.03em; line-height: 1; margin-bottom: 1rem; color: var(--black); }
-        .confirmed-text { font-size: 1rem; color: var(--warm-gray); max-width: 460px; margin: 0 auto 2.5rem; line-height: 1.6; }
-        .confirmed-details { display: inline-flex; flex-direction: column; gap: 0.5rem; padding: 1.5rem 2rem; background: var(--cream); border: 1px solid var(--border); border-radius: 8px; font-family: 'Inter Tight', sans-serif; font-weight: 600; color: var(--black); letter-spacing: -0.01em; }
-
-        /* FOOTER */
-        .footer { background: var(--cream); padding: 6rem 0 0; border-top: 1px solid var(--border); position: relative; overflow: hidden; }
-        .footer-grid { display: grid; grid-template-columns: 2fr 1fr 1fr; gap: 4rem; margin-bottom: 5rem; }
-        @media (max-width: 768px) { .footer-grid { grid-template-columns: 1fr; gap: 3rem; } }
-
-        .footer-brand { display: flex; flex-direction: column; gap: 1.5rem; }
-        .footer-logo { width: auto; height: 56px; align-self: flex-start; }
-        .footer-tagline { font-family: 'Inter Tight', sans-serif; font-weight: 700; font-size: clamp(1.5rem, 2.5vw, 2rem); letter-spacing: -0.03em; color: var(--black); max-width: 380px; line-height: 1.1; }
-        .footer-tagline em { font-style: italic; color: var(--terracotta); font-weight: 600; }
-
-        .footer-column { display: flex; flex-direction: column; gap: 0.75rem; }
-        .footer-column-title { font-family: 'JetBrains Mono', monospace; font-size: 0.65rem; color: var(--warm-gray-soft); text-transform: uppercase; letter-spacing: 0.08em; margin-bottom: 0.75rem; }
-        .footer-column-link { color: var(--black); text-decoration: none; font-size: 0.9375rem; transition: color 0.2s; display: inline-flex; align-items: center; gap: 0.375rem; }
-        .footer-column-link:hover { color: var(--terracotta); }
-        .footer-link-arrow { transition: transform 0.2s; }
-        .footer-column-link:hover .footer-link-arrow { transform: translate(2px, -2px); }
-
-        .footer-bottom { padding: 2rem 0; border-top: 1px solid var(--border); display: flex; justify-content: space-between; font-family: 'JetBrains Mono', monospace; font-size: 0.65rem; color: var(--warm-gray); text-transform: uppercase; letter-spacing: 0.08em; }
-        @media (max-width: 768px) { .footer-bottom { flex-direction: column; gap: 0.5rem; } }
-
-        .footer-mark {
-            margin-top: 4rem;
-            font-family: 'Inter Tight', sans-serif;
-            font-weight: 800;
-            font-size: clamp(7rem, 26vw, 22rem);
-            line-height: 0.85;
-            letter-spacing: -0.06em;
-            color: var(--black);
-            white-space: nowrap;
-            text-align: center;
-            user-select: none;
-            margin-bottom: -2.5rem;
-        }
-        .footer-mark em { font-style: italic; color: var(--terracotta); font-weight: 700; }
-
-        @keyframes fadeUp { from { opacity: 0; transform: translateY(24px); } to { opacity: 1; transform: translateY(0); } }
-        .reveal { opacity: 0; animation: fadeUp 0.9s cubic-bezier(0.16, 1, 0.3, 1) forwards; }
-        .reveal-1 { animation-delay: 0.1s; }
-        .reveal-2 { animation-delay: 0.25s; }
-        .reveal-3 { animation-delay: 0.4s; }
-        .reveal-4 { animation-delay: 0.55s; }
-        .reveal-5 { animation-delay: 0.7s; }
-    </style>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>m.one — Estrategia primero. Marca, comunicación y campañas.</title>
+<meta name="description" content="m.one es un estudio de marca y comunicación visual fundado por Christian Martos. Estrategia, identidad, campañas y lanzamientos para empresas que quieren elevar el valor que entregan.">
+<link rel="canonical" href="https://m-one.studio/">
+<link href="https://fonts.googleapis.com/css2?family=Inter+Tight:ital,wght@0,400;0,500;0,600;0,700;0,800;1,400;1,500;1,600;1,700;1,800&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+
+<script type="text/javascript">
+(function (C, A, L) { let p = function (a, ar) { a.q.push(ar); }; let d = C.document; C.Cal = C.Cal || function () { let cal = C.Cal; let ar = arguments; if (!cal.loaded) { cal.ns = {}; cal.q = cal.q || []; d.head.appendChild(d.createElement("script")).src = A; cal.loaded = true; } if (ar[0] === L) { const api = function () { p(api, arguments); }; const namespace = ar[1]; api.q = api.q || []; if(typeof namespace === "string"){cal.ns[namespace] = cal.ns[namespace] || api;p(cal.ns[namespace], ar);p(cal, ["initNamespace", namespace]);} else p(cal, ar); return;} p(cal, ar); }; })(window, "https://app.cal.com/embed/embed.js", "init");
+Cal("init", "llamada-inicial-30min", {origin:"https://app.cal.com"});
+Cal.ns["llamada-inicial-30min"]("ui", {
+  "cssVarsPerTheme":{
+    "light":{"cal-brand":"#B15B20","cal-text":"#1A1714","cal-bg":"#F4EFE6","cal-border-default":"#E0D5BE"},
+    "dark":{"cal-brand":"#D4763A","cal-text":"#F4EFE6","cal-bg":"#1A1714"}
+  },
+  "hideEventTypeDetails":false,"layout":"month_view"
+});
+</script>
+
+<style>
+:root{
+    --cream:#F4EFE6;--cream-soft:#EDE5D4;--cream-deep:#E0D5BE;
+    --black:#1A1714;--black-soft:#272422;
+    --terracotta:#B15B20;--terracotta-light:#D4763A;--terracotta-dark:#8A4418;
+    --warm-gray:#6A5F52;--warm-gray-soft:#9A8E7E;
+    --border:rgba(26,23,20,0.15);--border-soft:rgba(26,23,20,0.08);
+}
+*{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{font-family:'Inter',sans-serif;background:var(--cream);color:var(--black);line-height:1.6;-webkit-font-smoothing:antialiased;overflow-x:hidden}
+
+body::before{
+    content:'';position:fixed;inset:0;pointer-events:none;z-index:9999;opacity:.04;
+    background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='3'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+}
+
+em{font-style:italic;color:var(--terracotta)}
+.container{max-width:1280px;margin:0 auto;padding:0 2rem}
+section{position:relative}
+
+.nav{position:fixed;top:1.5rem;left:50%;transform:translateX(-50%);z-index:100;background:rgba(244,239,230,.85);backdrop-filter:blur(20px);border:1px solid var(--border);border-radius:100px;padding:.625rem 1.25rem;display:flex;align-items:center;gap:1.75rem;box-shadow:0 8px 24px -8px rgba(0,0,0,.08)}
+.nav-logo{height:1.5rem;display:flex;align-items:center}
+.nav-logo img{height:100%;width:auto;filter:brightness(0)}
+.nav-links{display:flex;gap:1.25rem}
+.nav-links a{font-family:'JetBrains Mono',monospace;font-size:.65rem;text-transform:uppercase;letter-spacing:.1em;color:var(--warm-gray);text-decoration:none;transition:color .25s}
+.nav-links a:hover{color:var(--terracotta)}
+.nav-cta{font-family:'JetBrains Mono',monospace;font-size:.65rem;text-transform:uppercase;letter-spacing:.1em;color:var(--cream);background:var(--black);padding:.5rem 1rem;border-radius:100px;text-decoration:none;transition:background .25s}
+.nav-cta:hover{background:var(--terracotta)}
+@media(max-width:760px){.nav-links{display:none}.nav{padding:.5rem .75rem .5rem 1rem}}
+
+.hero{padding:9rem 0 4rem;position:relative}
+.hero-grid{display:grid;grid-template-columns:1.4fr 1fr;gap:4rem;align-items:end}
+.hero-eyebrow{display:flex;align-items:center;gap:.75rem;color:var(--terracotta);font-family:'JetBrains Mono',monospace;font-size:.7rem;text-transform:uppercase;letter-spacing:.1em;margin-bottom:2rem}
+.hero-eyebrow::before{content:'';width:32px;height:1px;background:var(--terracotta)}
+.hero-title{font-family:'Inter Tight',sans-serif;font-weight:800;font-size:clamp(3rem,7vw,5.5rem);line-height:.95;letter-spacing:-.045em;margin-bottom:2rem}
+.hero-title em{font-style:italic;color:var(--terracotta);font-weight:700}
+.hero-sub{font-family:'Inter Tight',sans-serif;font-weight:500;font-size:clamp(1.125rem,1.4vw,1.375rem);line-height:1.4;color:var(--warm-gray);max-width:42ch;margin-bottom:2.5rem;letter-spacing:-.01em}
+.hero-actions{display:flex;gap:1rem;align-items:center;flex-wrap:wrap}
+.btn-primary{display:inline-flex;align-items:center;gap:.625rem;background:var(--black);color:var(--cream);font-family:'Inter Tight',sans-serif;font-weight:600;font-size:.95rem;letter-spacing:-.01em;padding:.875rem 1.375rem;border-radius:100px;text-decoration:none;transition:all .25s;border:none;cursor:pointer}
+.btn-primary:hover{background:var(--terracotta)}
+.btn-primary::after{content:'→';font-size:1.1em}
+.btn-secondary{font-family:'JetBrains Mono',monospace;font-size:.7rem;text-transform:uppercase;letter-spacing:.1em;color:var(--warm-gray);text-decoration:none;border-bottom:1px solid var(--border);padding-bottom:.25rem;transition:all .25s}
+.btn-secondary:hover{color:var(--terracotta);border-color:var(--terracotta)}
+
+.hero-visual{position:relative;aspect-ratio:1/1;background:var(--terracotta);border-radius:8px;display:flex;align-items:center;justify-content:center;overflow:hidden;box-shadow:0 24px 60px -20px rgba(177,91,32,.4)}
+.hero-visual::before{content:'';position:absolute;inset:0;background:radial-gradient(circle at 25% 20%, rgba(255,255,255,.18) 0%, transparent 60%)}
+.hero-visual::after{content:'';position:absolute;inset:0;background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='3'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");opacity:.07}
+.hero-visual img{width:55%;height:auto;filter:brightness(0) invert(1);position:relative;z-index:2}
+.hero-corner{position:absolute;font-family:'JetBrains Mono',monospace;font-size:.65rem;text-transform:uppercase;letter-spacing:.1em;color:rgba(242,237,228,.65);z-index:3}
+.hero-corner.tl{top:1rem;left:1.25rem}
+.hero-corner.br{bottom:1rem;right:1.25rem}
+
+@media(max-width:880px){.hero{padding:7rem 0 3rem}.hero-grid{grid-template-columns:1fr;gap:2.5rem}.hero-visual{max-width:340px}}
+
+.marquee{background:var(--black);color:var(--cream);padding:1.5rem 0;overflow:hidden;position:relative;margin:4rem 0}
+.marquee-track{display:flex;gap:4rem;animation:scroll 38s linear infinite;white-space:nowrap;width:max-content}
+.marquee-item{font-family:'Inter Tight',sans-serif;font-weight:600;font-size:1.5rem;letter-spacing:-.02em;display:flex;align-items:center;gap:4rem}
+.marquee-item em{font-style:italic;color:var(--terracotta-light);font-weight:600}
+.marquee-item::after{content:'·';color:var(--terracotta-light);margin-left:4rem}
+@keyframes scroll{from{transform:translateX(0)}to{transform:translateX(-50%)}}
+
+.sec-head{display:grid;grid-template-columns:240px 1fr;gap:3rem;align-items:end;margin-bottom:3.5rem;padding-top:5rem}
+.sec-eyebrow{font-family:'JetBrains Mono',monospace;font-size:.7rem;color:var(--terracotta);text-transform:uppercase;letter-spacing:.1em;display:flex;align-items:center;gap:.75rem}
+.sec-eyebrow::before{content:'';width:24px;height:1px;background:var(--terracotta)}
+.sec-title{font-family:'Inter Tight',sans-serif;font-weight:700;font-size:clamp(2rem,4vw,3.25rem);line-height:1;letter-spacing:-.035em}
+.sec-title em{font-style:italic;color:var(--terracotta)}
+.sec-meta{font-family:'JetBrains Mono',monospace;font-size:.65rem;color:var(--warm-gray-soft);text-transform:uppercase;letter-spacing:.08em;margin-top:.75rem}
+
+@media(max-width:760px){.sec-head{grid-template-columns:1fr;gap:1rem;padding-top:3rem}}
+
+.work{padding:2rem 0 5rem}
+.work-grid{display:grid;grid-template-columns:1fr 1fr;gap:3rem;margin-top:1rem}
+.work-item{display:flex;flex-direction:column;gap:1.25rem;text-decoration:none;color:inherit;cursor:pointer;transition:transform .4s ease}
+.work-item:hover{transform:translateY(-4px)}
+.work-item:nth-child(2){margin-top:4rem}
+
+.work-visual{aspect-ratio:4/5;border-radius:6px;overflow:hidden;position:relative}
+.work-visual::after{content:'';position:absolute;inset:0;background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='3'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");opacity:.05;pointer-events:none}
+
+.work-visual.khora{background:linear-gradient(140deg,#1F1F1F 0%,#0A0A0A 100%);display:flex;align-items:center;justify-content:center;flex-direction:column;color:#F0F0F0;padding:2rem}
+.work-visual.khora .label{font-family:'JetBrains Mono',monospace;font-size:.7rem;text-transform:uppercase;letter-spacing:.15em;color:#FF6B1A;margin-bottom:1.5rem;align-self:flex-start}
+.work-visual.khora .name{font-family:'Inter Tight',sans-serif;font-weight:800;font-size:clamp(3rem,7vw,5rem);letter-spacing:-.04em;line-height:.9;text-align:center}
+.work-visual.khora .tagline{font-family:'JetBrains Mono',monospace;font-size:.7rem;text-transform:uppercase;letter-spacing:.2em;color:#FF6B1A;margin-top:1.5rem;align-self:flex-end}
+
+.work-visual.skglass{background:linear-gradient(160deg,#E5E5E5 0%,#B8B8B8 100%);display:flex;align-items:center;justify-content:center;flex-direction:column;color:#1A1A1A;padding:2rem}
+.work-visual.skglass .label{font-family:'JetBrains Mono',monospace;font-size:.7rem;text-transform:uppercase;letter-spacing:.15em;color:var(--terracotta-dark);margin-bottom:1.5rem;align-self:flex-start}
+.work-visual.skglass .name{font-family:'Inter Tight',sans-serif;font-weight:700;font-size:clamp(2.5rem,6vw,4.5rem);letter-spacing:-.03em;line-height:.9;text-align:center}
+.work-visual.skglass .sub{font-family:'Inter Tight',sans-serif;font-weight:400;font-style:italic;font-size:1rem;color:#555;margin-top:.75rem;text-align:center}
+.work-visual.skglass .tagline{font-family:'JetBrains Mono',monospace;font-size:.65rem;text-transform:uppercase;letter-spacing:.2em;color:var(--terracotta-dark);margin-top:1.5rem;align-self:flex-end}
+
+.work-meta{display:flex;justify-content:space-between;align-items:baseline;font-family:'JetBrains Mono',monospace;font-size:.65rem;color:var(--warm-gray);text-transform:uppercase;letter-spacing:.08em}
+.work-meta-cat{color:var(--terracotta)}
+.work-title{font-family:'Inter Tight',sans-serif;font-weight:700;font-size:1.625rem;letter-spacing:-.025em;line-height:1.1;margin-bottom:.25rem}
+.work-title em{font-style:italic;color:var(--terracotta)}
+.work-brief{font-family:'Inter Tight',sans-serif;font-weight:400;font-size:1rem;line-height:1.5;color:var(--warm-gray);max-width:40ch}
+.work-link{font-family:'JetBrains Mono',monospace;font-size:.65rem;text-transform:uppercase;letter-spacing:.08em;color:var(--terracotta);margin-top:.5rem;display:inline-flex;align-items:center;gap:.5rem;transition:gap .3s}
+.work-item:hover .work-link{gap:.875rem}
+.work-link::after{content:'→'}
+
+@media(max-width:760px){.work-grid{grid-template-columns:1fr;gap:2.5rem}.work-item:nth-child(2){margin-top:0}}
+
+.philosophy{padding:5rem 0}
+.philosophy-grid{display:grid;grid-template-columns:240px 1fr;gap:3rem}
+.philosophy-list{display:flex;flex-direction:column}
+.principle{display:grid;grid-template-columns:140px 1fr;gap:2rem;padding:2.5rem 0;border-top:1px solid var(--border);align-items:start}
+.principle:last-child{border-bottom:1px solid var(--border)}
+.principle-num{font-family:'Inter Tight',sans-serif;font-weight:200;font-size:5rem;line-height:.85;letter-spacing:-.04em;color:var(--terracotta)}
+.principle-content h3{font-family:'Inter Tight',sans-serif;font-weight:700;font-size:1.5rem;letter-spacing:-.025em;margin-bottom:.625rem;line-height:1.15}
+.principle-content h3 em{font-style:italic;color:var(--terracotta)}
+.principle-content p{font-family:'Inter Tight',sans-serif;font-weight:400;font-size:1rem;line-height:1.5;color:var(--warm-gray);max-width:50ch}
+
+@media(max-width:760px){.philosophy-grid{grid-template-columns:1fr;gap:1.5rem}.principle{grid-template-columns:80px 1fr;gap:1rem}.principle-num{font-size:3.5rem}}
+
+.manifesto-band{background:var(--terracotta);color:var(--cream);padding:7rem 0;margin:5rem 0;position:relative;overflow:hidden}
+.manifesto-band::before{content:'';position:absolute;inset:0;background:radial-gradient(ellipse at 30% 20%,rgba(255,255,255,.15) 0%,transparent 60%)}
+.manifesto-band::after{content:'';position:absolute;inset:0;background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='3'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");opacity:.06}
+.manifesto-content{position:relative;z-index:2}
+.manifesto-eyebrow{font-family:'JetBrains Mono',monospace;font-size:.7rem;color:rgba(242,237,228,.7);text-transform:uppercase;letter-spacing:.1em;display:flex;align-items:center;gap:.75rem;margin-bottom:2rem}
+.manifesto-eyebrow::before{content:'';width:24px;height:1px;background:rgba(242,237,228,.5)}
+.manifesto-quote{font-family:'Inter Tight',sans-serif;font-weight:600;font-style:italic;font-size:clamp(1.875rem,4vw,3.25rem);line-height:1.1;letter-spacing:-.025em;max-width:24ch;color:var(--cream)}
+.manifesto-quote em{font-style:italic;color:rgba(242,237,228,.65);font-weight:600}
+
+.method{padding:5rem 0}
+.method-grid{display:grid;grid-template-columns:240px 1fr;gap:3rem;align-items:start}
+.method-intro{font-family:'Inter Tight',sans-serif;font-weight:500;font-size:1.125rem;color:var(--warm-gray);font-style:italic;margin-bottom:2rem;line-height:1.4}
+.method-list{display:flex;flex-direction:column}
+.method-step{display:grid;grid-template-columns:80px 1fr 1fr;gap:2rem;padding:1.75rem 0;border-top:1px solid var(--border);align-items:start;transition:padding-left .3s}
+.method-step:last-child{border-bottom:1px solid var(--border)}
+.method-step:hover{padding-left:1rem}
+.method-step-num{font-family:'JetBrains Mono',monospace;font-size:.7rem;color:var(--terracotta);text-transform:uppercase;letter-spacing:.08em;padding-top:.5rem}
+.method-step-name{font-family:'Inter Tight',sans-serif;font-weight:700;font-style:italic;font-size:1.875rem;letter-spacing:-.025em;line-height:1;color:var(--terracotta)}
+.method-step-text{font-family:'Inter Tight',sans-serif;font-weight:400;font-size:.95rem;line-height:1.5;color:var(--warm-gray);padding-top:.5rem}
+
+@media(max-width:760px){.method-grid{grid-template-columns:1fr;gap:1.5rem}.method-step{grid-template-columns:60px 1fr;gap:.75rem}.method-step-text{grid-column:1/3;margin-top:.5rem;padding-top:0}}
+
+.notes{padding:5rem 0}
+.notes-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1.75rem}
+.note-card{background:#FFF;border:1px solid var(--border-soft);border-radius:6px;padding:2rem 1.875rem;display:flex;flex-direction:column;gap:1rem;transition:all .35s;cursor:default}
+.note-card:hover{transform:translateY(-3px);border-color:var(--terracotta)}
+.note-meta{display:flex;justify-content:space-between;font-family:'JetBrains Mono',monospace;font-size:.6rem;text-transform:uppercase;letter-spacing:.08em;color:var(--warm-gray-soft)}
+.note-cat{color:var(--terracotta)}
+.note-title{font-family:'Inter Tight',sans-serif;font-weight:700;font-size:1.25rem;letter-spacing:-.02em;line-height:1.2;flex-grow:1}
+.note-title em{font-style:italic;color:var(--terracotta)}
+.note-status{font-family:'JetBrains Mono',monospace;font-size:.6rem;text-transform:uppercase;letter-spacing:.08em;color:var(--warm-gray);padding-top:1rem;border-top:1px solid var(--border-soft)}
+
+@media(max-width:760px){.notes-grid{grid-template-columns:1fr;gap:1rem}}
+
+.sobre{padding:5rem 0;position:relative}
+.sobre-grid{display:grid;grid-template-columns:1fr 1.2fr;gap:4rem;align-items:start}
+.sobre-photo-wrap{position:relative}
+.sobre-photo{aspect-ratio:4/5;border-radius:6px;overflow:hidden;background:var(--black);box-shadow:0 24px 60px -20px rgba(0,0,0,.25)}
+.sobre-photo img{width:100%;height:100%;object-fit:cover;object-position:center top;display:block;filter:grayscale(100%) contrast(1.05)}
+.sobre-caption{display:flex;justify-content:space-between;margin-top:1rem;font-family:'JetBrains Mono',monospace;font-size:.65rem;text-transform:uppercase;letter-spacing:.08em;color:var(--warm-gray)}
+.sobre-caption-name{color:var(--black)}
+.sobre-caption-role{color:var(--terracotta)}
+
+.sobre-content{padding-top:1.5rem}
+.sobre-eyebrow{font-family:'JetBrains Mono',monospace;font-size:.7rem;color:var(--terracotta);text-transform:uppercase;letter-spacing:.1em;display:flex;align-items:center;gap:.75rem;margin-bottom:2rem}
+.sobre-eyebrow::before{content:'';width:24px;height:1px;background:var(--terracotta)}
+.sobre-name{font-family:'Inter Tight',sans-serif;font-weight:800;font-size:clamp(2rem,3.5vw,3rem);letter-spacing:-.035em;line-height:1;margin-bottom:1.5rem}
+.sobre-name em{font-style:italic;color:var(--terracotta);font-weight:700}
+.sobre-text p{font-family:'Inter Tight',sans-serif;font-weight:400;font-size:1.0625rem;line-height:1.55;color:var(--warm-gray);margin-bottom:1rem;max-width:52ch}
+.sobre-text p strong{color:var(--black);font-weight:600}
+.sobre-text p em{font-style:italic;color:var(--terracotta);font-weight:500}
+.sobre-signature{margin-top:2rem;display:flex;align-items:center;gap:1rem}
+.sobre-signature-line{flex:1;height:1px;background:var(--border);max-width:60px}
+.sobre-signature-text{font-family:'JetBrains Mono',monospace;font-size:.7rem;text-transform:uppercase;letter-spacing:.1em;color:var(--terracotta)}
+
+@media(max-width:880px){.sobre-grid{grid-template-columns:1fr;gap:2rem}.sobre-photo-wrap{max-width:420px}}
+
+.big-quote{padding:7rem 0 5rem;text-align:center}
+.big-quote-mark{font-family:'Inter Tight',sans-serif;font-weight:700;font-style:italic;font-size:5rem;line-height:.5;color:var(--terracotta);opacity:.4;margin-bottom:1rem}
+.big-quote-text{font-family:'Inter Tight',sans-serif;font-weight:600;font-style:italic;font-size:clamp(1.75rem,3.5vw,2.875rem);line-height:1.15;letter-spacing:-.025em;max-width:24ch;margin:0 auto;color:var(--black)}
+.big-quote-text em{font-style:italic;color:var(--terracotta);font-weight:700}
+
+.booking{display:grid;grid-template-columns:1fr 1fr;min-height:520px;margin:5rem 0 0}
+.booking-left{background:var(--black);color:var(--cream);padding:5rem 4rem;display:flex;flex-direction:column;justify-content:center;position:relative;overflow:hidden}
+.booking-left::before{content:'';position:absolute;inset:0;background:radial-gradient(ellipse at 80% 20%,rgba(177,91,32,.18) 0%,transparent 60%)}
+.booking-content{position:relative;z-index:2}
+.booking-eyebrow{font-family:'JetBrains Mono',monospace;font-size:.7rem;color:var(--terracotta-light);text-transform:uppercase;letter-spacing:.1em;display:flex;align-items:center;gap:.75rem;margin-bottom:2rem}
+.booking-eyebrow::before{content:'';width:24px;height:1px;background:var(--terracotta-light)}
+.booking-title{font-family:'Inter Tight',sans-serif;font-weight:800;font-size:clamp(2rem,3.5vw,3rem);letter-spacing:-.035em;line-height:1.05;margin-bottom:1.25rem}
+.booking-title em{font-style:italic;color:var(--terracotta-light);font-weight:700}
+.booking-sub{font-family:'Inter Tight',sans-serif;font-weight:400;font-size:1.0625rem;line-height:1.5;color:rgba(242,237,228,.7);max-width:38ch;margin-bottom:2rem}
+.booking-meta{font-family:'JetBrains Mono',monospace;font-size:.65rem;text-transform:uppercase;letter-spacing:.1em;color:rgba(242,237,228,.5);display:flex;gap:1.5rem;flex-wrap:wrap}
+.booking-meta-item{display:flex;align-items:center;gap:.5rem}
+.booking-meta-item::before{content:'';width:6px;height:6px;background:var(--terracotta-light);border-radius:50%}
+
+.booking-right{background:var(--cream);padding:5rem 4rem;display:flex;flex-direction:column;justify-content:center;align-items:flex-start}
+.booking-cta-card{display:flex;flex-direction:column;gap:1.5rem;max-width:380px}
+.booking-cta-eyebrow{font-family:'JetBrains Mono',monospace;font-size:.65rem;color:var(--warm-gray);text-transform:uppercase;letter-spacing:.1em}
+.booking-cta-title{font-family:'Inter Tight',sans-serif;font-weight:700;font-size:1.625rem;letter-spacing:-.025em;line-height:1.15}
+.booking-cta-title em{font-style:italic;color:var(--terracotta)}
+.booking-cta-text{font-family:'Inter Tight',sans-serif;font-weight:400;font-size:.95rem;line-height:1.55;color:var(--warm-gray)}
+.booking-btn{display:inline-flex;align-items:center;gap:.625rem;background:var(--black);color:var(--cream);font-family:'Inter Tight',sans-serif;font-weight:600;font-size:.95rem;letter-spacing:-.01em;padding:1rem 1.5rem;border-radius:100px;text-decoration:none;transition:all .25s;border:none;cursor:pointer;align-self:flex-start}
+.booking-btn:hover{background:var(--terracotta)}
+.booking-btn::after{content:'→';font-size:1.1em}
+.booking-list{display:flex;flex-direction:column;gap:.75rem;margin-top:.5rem;padding-top:1.25rem;border-top:1px solid var(--border)}
+.booking-list-item{display:flex;align-items:center;gap:.75rem;font-family:'Inter Tight',sans-serif;font-size:.875rem;color:var(--warm-gray)}
+.booking-list-item::before{content:'+';color:var(--terracotta);font-weight:700}
+
+@media(max-width:880px){.booking{grid-template-columns:1fr}.booking-left,.booking-right{padding:3.5rem 2rem}}
+
+.footer{background:var(--black);color:var(--cream);padding:5rem 0 2rem}
+.footer-grid{display:grid;grid-template-columns:1.5fr 1fr 1fr 1fr;gap:3rem;padding-bottom:3rem;border-bottom:1px solid rgba(242,237,228,.15)}
+.footer-brand-logo{height:2.5rem;margin-bottom:1.5rem;display:block}
+.footer-brand-logo img{height:100%;width:auto}
+.footer-tagline{font-family:'Inter Tight',sans-serif;font-weight:500;font-style:italic;font-size:1.125rem;color:rgba(242,237,228,.6);max-width:30ch;line-height:1.4}
+.footer-tagline em{font-style:italic;color:var(--terracotta-light);font-weight:600}
+.footer-col-title{font-family:'JetBrains Mono',monospace;font-size:.65rem;text-transform:uppercase;letter-spacing:.1em;color:var(--terracotta-light);margin-bottom:1.25rem}
+.footer-col ul{list-style:none;padding:0;display:flex;flex-direction:column;gap:.625rem}
+.footer-col li a{color:rgba(242,237,228,.7);text-decoration:none;font-family:'Inter Tight',sans-serif;font-size:.95rem;transition:color .25s}
+.footer-col li a:hover{color:var(--terracotta-light)}
+.footer-bottom{padding-top:2rem;display:flex;justify-content:space-between;align-items:center;font-family:'JetBrains Mono',monospace;font-size:.6rem;text-transform:uppercase;letter-spacing:.08em;color:rgba(242,237,228,.4);flex-wrap:wrap;gap:1rem}
+.footer-updated{display:flex;align-items:center;gap:.5rem}
+.footer-updated::before{content:'';width:6px;height:6px;background:var(--terracotta-light);border-radius:50%;display:inline-block}
+
+@media(max-width:760px){.footer-grid{grid-template-columns:1fr 1fr;gap:2rem}}
+
+@keyframes fadeUp{from{opacity:0;transform:translateY(20px)}to{opacity:1;transform:translateY(0)}}
+.reveal{opacity:0;animation:fadeUp .9s cubic-bezier(.16,1,.3,1) forwards}
+.reveal-1{animation-delay:.1s}
+.reveal-2{animation-delay:.25s}
+
+@media (prefers-reduced-motion:reduce){*,::before,::after{animation:none!important;transition:none!important}}
+</style>
 </head>
 <body>
-    <nav class="nav">
-        <a href="#top" class="nav-logo">
-            <img src="assets/m-one-logo.png" alt="m.one">
-        </a>
-        <div class="nav-links">
-            <a href="#vision" class="nav-link">Visión</a>
-            <a href="#method" class="nav-link">Método</a>
-            <a href="#about" class="nav-link">Sobre</a>
-        </div>
-        <a href="#booking" class="nav-cta">Reservar llamada</a>
-    </nav>
 
-    <section class="hero" id="top">
-        <div class="container">
-            <div class="hero-grid">
-                <div class="hero-content">
-                    <h1 class="hero-title reveal reveal-2">
-                        Estrategia <em>primero.</em><br>
-                        Lo demás, después.
-                    </h1>
+<nav class="nav">
+    <a href="#top" class="nav-logo"><img src="assets/m-one-logo.png" alt="m.one"></a>
+    <div class="nav-links">
+        <a href="#trabajo">Trabajo</a>
+        <a href="#filosofia">Filosofía</a>
+        <a href="#metodo">Método</a>
+        <a href="#notas">Notas</a>
+        <a href="#sobre">Sobre</a>
+    </div>
+    <a href="#hablamos" class="nav-cta">Hablamos →</a>
+</nav>
 
-                    <p class="hero-description reveal reveal-3">
-                        Marca, marketing y posicionamiento para empresas que quieren <strong>elevar el valor que entregan</strong> a sus clientes — y el que reciben a cambio.
-                    </p>
-
-                    <div class="hero-cta-row reveal reveal-4">
-                        <a href="#booking" class="btn-primary">
-                            Reservar llamada
-                            <svg class="arrow-icon" viewBox="0 0 16 16" fill="none"><path d="M3 8H13M13 8L8.5 3.5M13 8L8.5 12.5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
-                        </a>
-                        <a href="#vision" class="btn-secondary">
-                            Ver el enfoque
-                            <svg class="arrow-icon" viewBox="0 0 16 16" fill="none"><path d="M8 3L8 13M8 13L3.5 8.5M8 13L12.5 8.5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
-                        </a>
-                    </div>
-                </div>
-
-                <div class="hero-visual reveal reveal-3">
-                    <span class="hero-visual-corner tl">— m.one</span>
-                    <span class="hero-visual-corner tr">2026</span>
-                    <span class="hero-visual-corner bl">studio</span>
-                    <span class="hero-visual-corner br">★</span>
-                    <img src="assets/m-one-logo.png" alt="m.one">
+<section class="hero" id="top">
+    <div class="container">
+        <div class="hero-grid">
+            <div class="hero-text reveal reveal-1">
+                <div class="hero-eyebrow">Estudio · Marca, comunicación y campañas</div>
+                <h1 class="hero-title">Estrategia<br><em>primero.</em><br>Lo demás,<br>después.</h1>
+                <p class="hero-sub">Marca, comunicación visual y campañas para empresas que entienden que pensar y ejecutar deberían ser <em>la misma decisión</em>.</p>
+                <div class="hero-actions">
+                    <button class="btn-primary" data-cal-namespace="llamada-inicial-30min" data-cal-link="m.one.studio/llamada-inicial-30min" data-cal-config='{"layout":"month_view"}'>Reservar llamada</button>
+                    <a href="#trabajo" class="btn-secondary">Ver trabajo →</a>
                 </div>
             </div>
-        </div>
-    </section>
-
-    <!-- MARQUEE -->
-    <div class="marquee">
-        <div class="marquee-track">
-            <div class="marquee-item">
-                <span class="marquee-em">Estrategia</span>
-                <span class="marquee-dot"></span>
-                <span>Marca</span>
-                <span class="marquee-dot"></span>
-                <span class="marquee-em">Posicionamiento</span>
-                <span class="marquee-dot"></span>
-                <span>Marketing con visión</span>
-                <span class="marquee-dot"></span>
-                <span class="marquee-em">Decisiones con criterio</span>
-                <span class="marquee-dot"></span>
-                <span>Valor que circula</span>
-                <span class="marquee-dot"></span>
-            </div>
-            <div class="marquee-item">
-                <span class="marquee-em">Estrategia</span>
-                <span class="marquee-dot"></span>
-                <span>Marca</span>
-                <span class="marquee-dot"></span>
-                <span class="marquee-em">Posicionamiento</span>
-                <span class="marquee-dot"></span>
-                <span>Marketing con visión</span>
-                <span class="marquee-dot"></span>
-                <span class="marquee-em">Decisiones con criterio</span>
-                <span class="marquee-dot"></span>
-                <span>Valor que circula</span>
-                <span class="marquee-dot"></span>
+            <div class="hero-visual reveal reveal-2">
+                <span class="hero-corner tl">— m.one</span>
+                <span class="hero-corner br">EST. 2026</span>
+                <img src="assets/m-one-logo.png" alt="m.one">
             </div>
         </div>
     </div>
+</section>
 
-    <!-- PHILOSOPHY -->
-    <section class="section" id="vision">
-        <div class="container">
-            <div class="section-eyebrow-row">
-                <span class="section-tag">01 / Visión</span>
-                <span class="section-tag-right">Lo que creo</span>
+<div class="marquee">
+    <div class="marquee-track">
+        <span class="marquee-item">Estrategia <em>primero.</em></span>
+        <span class="marquee-item">Marca como sistema, <em>no como decoración.</em></span>
+        <span class="marquee-item">Pensar antes. <em>Producir después.</em></span>
+        <span class="marquee-item">Una sola voz, <em>sin intermediarios.</em></span>
+        <span class="marquee-item">Estrategia <em>primero.</em></span>
+        <span class="marquee-item">Marca como sistema, <em>no como decoración.</em></span>
+        <span class="marquee-item">Pensar antes. <em>Producir después.</em></span>
+        <span class="marquee-item">Una sola voz, <em>sin intermediarios.</em></span>
+    </div>
+</div>
+
+<section class="work" id="trabajo">
+    <div class="container">
+        <div class="sec-head">
+            <div>
+                <div class="sec-eyebrow">— Trabajo</div>
+                <div class="sec-meta">Selección · 2025</div>
             </div>
+            <h2 class="sec-title">Marcas y proyectos<br><em>que se han hecho.</em></h2>
+        </div>
 
-            <p class="philosophy-intro">
-                Una marca clara <span class="strike">se ve.</span> <em>Se vive.</em>
-            </p>
+        <div class="work-grid">
+            <a href="trabajo/khora.html" class="work-item">
+                <div class="work-visual khora">
+                    <span class="label">— Drop 001</span>
+                    <span class="name">KHORA</span>
+                    <span class="tagline">Healthy × Hype</span>
+                </div>
+                <div class="work-meta">
+                    <span class="work-meta-cat">— Marca y estrategia</span>
+                    <span>Sept · 2025</span>
+                </div>
+                <h3 class="work-title">KHORA — la comida tratada como <em>streetwear.</em></h3>
+                <p class="work-brief">Branding completo para un nuevo concepto de comida sana. Identidad, packaging, uniformes, app y cartelería con un único hilo narrativo.</p>
+                <span class="work-link">Ver caso</span>
+            </a>
 
-            <div class="principles">
+            <a href="trabajo/sk-glass.html" class="work-item">
+                <div class="work-visual skglass">
+                    <span class="label">— KLEIN System</span>
+                    <span class="name">SK GLASS</span>
+                    <span class="sub">Architectural Series</span>
+                    <span class="tagline">B2B · Lanzamiento</span>
+                </div>
+                <div class="work-meta">
+                    <span class="work-meta-cat">— Lanzamiento de producto</span>
+                    <span>Jul · 2025</span>
+                </div>
+                <h3 class="work-title">SK GLASS / KLEIN — un lanzamiento <em>técnico.</em></h3>
+                <p class="work-brief">Dirección visual y editorial del lanzamiento de un sistema de cristal arquitectónico. Catálogos, fichas técnicas y campaña visual integral.</p>
+                <span class="work-link">Ver caso</span>
+            </a>
+        </div>
+    </div>
+</section>
+
+<section class="philosophy" id="filosofia">
+    <div class="container">
+        <div class="sec-head">
+            <div>
+                <div class="sec-eyebrow">— Filosofía</div>
+                <div class="sec-meta">Tres principios · una idea</div>
+            </div>
+            <h2 class="sec-title">Cómo pensamos<br><em>la marca.</em></h2>
+        </div>
+
+        <div class="philosophy-grid">
+            <div></div>
+            <div class="philosophy-list">
                 <div class="principle">
                     <span class="principle-num">01</span>
                     <div class="principle-content">
-                        <h3 class="principle-title"><em>Visión</em> primero.</h3>
-                        <p class="principle-text">Si no sabes a dónde vas, ningún logo, web o campaña te lleva ahí. Empezamos por lo difícil: pensar.</p>
+                        <h3>Visión <em>primero.</em></h3>
+                        <p>Antes de la pieza, la decisión. Antes del logo, el porqué. La estrategia no es una etapa — es el suelo sobre el que se construye todo lo demás.</p>
                     </div>
                 </div>
                 <div class="principle">
                     <span class="principle-num">02</span>
                     <div class="principle-content">
-                        <h3 class="principle-title"><em>Contexto</em> sobre todo.</h3>
-                        <p class="principle-text">Cada negocio tiene su propio contexto. La estrategia se construye desde lo que eres y a dónde quieres llegar.</p>
+                        <h3>Contexto <em>sobre todo.</em></h3>
+                        <p>Cada marca vive en un mercado, una cultura, un momento. Lo que funcionó ayer puede sobrar mañana. El criterio se construye observando, no copiando.</p>
                     </div>
                 </div>
                 <div class="principle">
                     <span class="principle-num">03</span>
                     <div class="principle-content">
-                        <h3 class="principle-title"><em>Valor</em> que circula.</h3>
-                        <p class="principle-text">Cuando elevas el valor que entregas, sube el valor que recibes. Una marca clara conecta esas dos cosas.</p>
+                        <h3>Valor que <em>circula.</em></h3>
+                        <p>Si subes el valor que entregas, sube el valor que recibes. La marca no es un gasto — es el ecosistema que decide quién entra y quién paga lo que pides.</p>
                     </div>
                 </div>
             </div>
-        </div>
-    </section>
-
-    <!-- MANIFESTO BAND -->
-    <div class="manifesto-band">
-        <div class="container">
-            <div class="manifesto-eyebrow">— Manifiesto —</div>
-            <p class="manifesto-quote">
-                La marca no es cómo te ven. Es la diferencia que sienten cuando trabajan contigo.
-            </p>
         </div>
     </div>
+</section>
 
-    <!-- METHOD -->
-    <section class="section" id="method">
-        <div class="container">
-            <div class="section-eyebrow-row">
-                <span class="section-tag">02 / Método</span>
-                <span class="section-tag-right">Cómo trabajo</span>
+<div class="manifesto-band">
+    <div class="container manifesto-content">
+        <div class="manifesto-eyebrow">— Manifesto</div>
+        <p class="manifesto-quote">La marca no es <em>cómo te ven.</em><br>Es la diferencia que sienten <em>cuando trabajan contigo.</em></p>
+    </div>
+</div>
+
+<section class="method" id="metodo">
+    <div class="container">
+        <div class="sec-head">
+            <div>
+                <div class="sec-eyebrow">— Método</div>
+                <div class="sec-meta">Cuatro verbos · un orden</div>
             </div>
+            <div>
+                <h2 class="sec-title">El qué cambia.<br><em>El cómo, no.</em></h2>
+                <p class="method-intro">Lo que ofrezco depende de lo que necesitas. Lo que no cambia es el orden.</p>
+            </div>
+        </div>
 
-            <p class="method-intro">
-                El <em>qué</em> cambia. El <em>cómo,</em> no.
-            </p>
-
+        <div class="method-grid">
+            <div></div>
             <div class="method-list">
-                <div class="method-row">
-                    <span class="method-num">— 01</span>
-                    <h3 class="method-step">Escucha</h3>
-                    <p class="method-text">Primero entender. Una conversación honesta para saber quién eres, qué quieres construir y si tiene sentido trabajar juntos.</p>
+                <div class="method-step">
+                    <span class="method-step-num">01</span>
+                    <span class="method-step-name">Escucha.</span>
+                    <p class="method-step-text">Antes de proponer. Una conversación honesta para entender quién eres, qué vendes, y qué quieres construir.</p>
                 </div>
-                <div class="method-row">
-                    <span class="method-num">— 02</span>
-                    <h3 class="method-step">Diagnóstico</h3>
-                    <p class="method-text">Mirar la marca como un sistema. Estrategia, identidad, narrativa, presencia digital, experiencia. Detectar qué funciona, qué falta y qué se puede afinar.</p>
+                <div class="method-step">
+                    <span class="method-step-num">02</span>
+                    <span class="method-step-name">Diagnóstico.</span>
+                    <p class="method-step-text">La marca como un sistema. Detectar qué funciona, qué falta y qué se puede afinar antes de tocar nada.</p>
                 </div>
-                <div class="method-row">
-                    <span class="method-num">— 03</span>
-                    <h3 class="method-step">Ejecución</h3>
-                    <p class="method-text">Trabajar lo que mueve la aguja. Cada decisión conectada a un objetivo de negocio. Estrategia primero, ejecución después.</p>
+                <div class="method-step">
+                    <span class="method-step-num">03</span>
+                    <span class="method-step-name">Ejecución.</span>
+                    <p class="method-step-text">Lo que mueve la aguja. Cada decisión visual conectada a una decisión de negocio.</p>
                 </div>
-                <div class="method-row">
-                    <span class="method-num">— 04</span>
-                    <h3 class="method-step">Acompañamiento</h3>
-                    <p class="method-text">Acompañar hasta que funciona. Una marca se prueba, se ajusta y se afina hasta que opera de verdad — y después, hasta donde quieras llevarla.</p>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- ABOUT (BLACK) -->
-    <section class="about-section" id="about">
-        <div class="container">
-            <div class="section-eyebrow-row">
-                <span class="section-tag">03 / Sobre</span>
-                <span class="section-tag-right">Quién soy</span>
-            </div>
-
-            <div class="about-grid">
-                <div class="about-visual">
-                    <span class="about-visual-corner">— m.one studio</span>
-                    <img src="assets/m-one-logo.png" alt="m.one">
-                </div>
-                <div class="about-content">
-                    <h3>
-                        La pregunta no es <em>qué vendes.</em> Es <em>por qué te eligen.</em>
-                    </h3>
-                    <p>Llevo años ayudando a marcas a encontrar lo que las hace específicas. He visto qué funciona, qué no, y qué da igual aunque parezca importante.</p>
-                    <p>m.one es la consecuencia: un enfoque estratégico al marketing y la marca, donde cada decisión tiene una razón clara y cada proyecto se construye sobre lo que tu negocio necesita de verdad.</p>
-
-                    <div class="about-meta">
-                        <div class="about-meta-item">
-                            <span class="about-meta-label">Enfoque</span>
-                            <span class="about-meta-value">Estrategia primero</span>
-                        </div>
-                        <div class="about-meta-item">
-                            <span class="about-meta-label">Modalidad</span>
-                            <span class="about-meta-value">Personalizado por proyecto</span>
-                        </div>
-                    </div>
+                <div class="method-step">
+                    <span class="method-step-num">04</span>
+                    <span class="method-step-name">Acompañamiento.</span>
+                    <p class="method-step-text">Una marca se prueba, se ajusta, se afina. Te acompaño hasta que funciona de verdad — no hasta que se entrega.</p>
                 </div>
             </div>
         </div>
-    </section>
+    </div>
+</section>
 
-    <!-- BIG QUOTE -->
-    <section class="quote-section">
-        <div class="container">
-            <div class="quote-eyebrow">— Idea fuerza —</div>
-            <p class="big-quote">
-                Una marca clara <em>se nota.</em> Una marca estratégica <em>se convierte.</em>
-            </p>
+<section class="notes" id="notas">
+    <div class="container">
+        <div class="sec-head">
+            <div>
+                <div class="sec-eyebrow">— Notas</div>
+                <div class="sec-meta">Pensamiento · 2026</div>
+            </div>
+            <h2 class="sec-title">Cómo pienso<br>la marca <em>en voz alta.</em></h2>
         </div>
-    </section>
 
-    <!-- BOOKING -->
-    <section class="section" id="booking">
-        <div class="container">
-            <div class="section-eyebrow-row">
-                <span class="section-tag">04 / Hablar</span>
-                <span class="section-tag-right">Reservar llamada</span>
+        <div class="notes-grid">
+            <div class="note-card">
+                <div class="note-meta">
+                    <span class="note-cat">— Análisis</span>
+                    <span>Mayo · 2026</span>
+                </div>
+                <h3 class="note-title">Por qué Mercadona <em>no necesita publicidad.</em></h3>
+                <p class="note-status">— Próximamente</p>
+            </div>
+            <div class="note-card">
+                <div class="note-meta">
+                    <span class="note-cat">— Análisis</span>
+                    <span>Mayo · 2026</span>
+                </div>
+                <h3 class="note-title">Apple no vende productos. <em>Vende decisiones.</em></h3>
+                <p class="note-status">— Próximamente</p>
+            </div>
+            <div class="note-card">
+                <div class="note-meta">
+                    <span class="note-cat">— Manifesto</span>
+                    <span>Mayo · 2026</span>
+                </div>
+                <h3 class="note-title">Una marca clara <em>se vive,</em> no se ve.</h3>
+                <p class="note-status">— Próximamente</p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="sobre" id="sobre">
+    <div class="container">
+        <div class="sec-head">
+            <div>
+                <div class="sec-eyebrow">— Sobre</div>
+                <div class="sec-meta">El estudio · una persona</div>
+            </div>
+            <h2 class="sec-title">La pregunta no es <em>qué vendes.</em><br>Es <em>por qué te eligen.</em></h2>
+        </div>
+
+        <div class="sobre-grid">
+            <div class="sobre-photo-wrap">
+                <div class="sobre-photo">
+                    <img src="assets/christian-avatar.jpg" alt="Christian Martos">
+                </div>
+                <div class="sobre-caption">
+                    <span class="sobre-caption-name">Christian Martos</span>
+                    <span class="sobre-caption-role">— Fundador</span>
+                </div>
             </div>
 
-            <p class="booking-intro">
-                <em>30 minutos.</em> Una conversación. <em>Cero compromiso.</em>
-            </p>
-
-            <div class="booking-split">
-                <div class="booking-left">
-                    <div class="booking-left-content">
-                        <span class="booking-left-eyebrow">— Llamada inicial</span>
-                        <h3 class="booking-left-title">Una conversación de <em>30 minutos</em> para conocernos.</h3>
-                        <p class="booking-left-text">
-                            Hablamos de tu proyecto, en qué punto estás y qué necesitas. Si tiene sentido seguir, lo hablamos. Si no, te llevas una conversación útil.
-                        </p>
-                    </div>
-                    <div class="booking-features">
-                        <div class="booking-feature">
-                            <svg class="booking-feature-icon" viewBox="0 0 24 24" fill="none"><path d="M12 6V12L16 14M22 12C22 17.5228 17.5228 22 12 22C6.47715 22 2 17.5228 2 12C2 6.47715 6.47715 2 12 2C17.5228 2 22 6.47715 22 12Z" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
-                            30 minutos
-                        </div>
-                        <div class="booking-feature">
-                            <svg class="booking-feature-icon" viewBox="0 0 24 24" fill="none"><path d="M23 7L16 12L23 17V7Z" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/><rect x="1" y="5" width="15" height="14" rx="2" stroke="currentColor" stroke-width="1.5"/></svg>
-                            Vía Google Meet
-                        </div>
-                        <div class="booking-feature">
-                            <svg class="booking-feature-icon" viewBox="0 0 24 24" fill="none"><path d="M12 2L15.09 8.26L22 9.27L17 14.14L18.18 21.02L12 17.77L5.82 21.02L7 14.14L2 9.27L8.91 8.26L12 2Z" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
-                            Sin coste
-                        </div>
-                    </div>
+            <div class="sobre-content">
+                <div class="sobre-eyebrow">Quién está detrás</div>
+                <h3 class="sobre-name">Soy <em>Christian Martos.</em></h3>
+                <div class="sobre-text">
+                    <p>Llevo años trabajando en estrategia, marca y comunicación visual desde múltiples ángulos — desde la dirección de identidad hasta el lanzamiento de productos.</p>
+                    <p>Fundé <strong>m.one</strong> con una idea simple: <em>la mayoría de marcas no tienen un problema de ejecución. Tienen un problema de orden.</em></p>
+                    <p>Pensar antes. Producir después. Esa es la regla.</p>
                 </div>
-
-                <div class="booking-right">
-                    <div class="booking-cta">
-                        <span class="booking-cta-eyebrow">— Calendario en directo</span>
-                        <div class="booking-cta-icon">
-                            <svg width="44" height="44" viewBox="0 0 24 24" fill="none"><path d="M16 2V6M8 2V6M3 10H21M5 4H19C20.1046 4 21 4.89543 21 6V20C21 21.1046 20.1046 22 19 22H5C3.89543 22 3 21.1046 3 20V6C3 4.89543 3.89543 4 5 4Z" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg>
-                        </div>
-                        <h3 class="booking-cta-title">Elige tu hueco <em>en un click.</em></h3>
-                        <p class="booking-cta-text">Calendario en tiempo real con mi disponibilidad real. Confirmación inmediata en tu email con el link de Google Meet incluido.</p>
-                        <button
-                            class="booking-cta-btn"
-                            data-cal-namespace="llamada-inicial-30min"
-                            data-cal-link="m.one.studio/llamada-inicial-30min"
-                            data-cal-config='{"layout":"month_view"}'>
-                            Abrir calendario
-                            <svg class="arrow-icon" viewBox="0 0 16 16" fill="none"><path d="M3 8H13M13 8L8.5 3.5M13 8L8.5 12.5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
-                        </button>
-                        <div class="booking-cta-meta">
-                            <div class="booking-cta-meta-item">
-                                <svg width="14" height="14" viewBox="0 0 24 24" fill="none"><path d="M9 12L11 14L15 10M21 12C21 16.9706 16.9706 21 12 21C7.02944 21 3 16.9706 3 12C3 7.02944 7.02944 3 12 3C16.9706 3 21 7.02944 21 12Z" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
-                                Confirmación inmediata
-                            </div>
-                            <div class="booking-cta-meta-item">
-                                <svg width="14" height="14" viewBox="0 0 24 24" fill="none"><path d="M3 8L7.89 11.26C9.18 12.13 10.82 12.13 12.11 11.26L17 8M5 19H19C20.1046 19 21 18.1046 21 17V7C21 5.89543 20.1046 5 19 5H5C3.89543 5 3 5.89543 3 7V17C3 18.1046 3.89543 19 5 19Z" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
-                                Link de Meet automático
-                            </div>
-                        </div>
-                    </div>
+                <div class="sobre-signature">
+                    <span class="sobre-signature-line"></span>
+                    <span class="sobre-signature-text">— hello@m-one.studio</span>
                 </div>
             </div>
         </div>
-    </section>
+    </div>
+</section>
 
-    <!-- FOOTER -->
-    <footer class="footer">
-        <div class="container">
-            <div class="footer-grid">
-                <div class="footer-brand">
-                    <img src="assets/m-one-logo.png" alt="m.one" class="footer-logo">
-                    <p class="footer-tagline">Estrategia <em>primero.</em></p>
-                </div>
-                <div class="footer-column">
-                    <span class="footer-column-title">— Navegar</span>
-                    <a href="#vision" class="footer-column-link">Visión</a>
-                    <a href="#method" class="footer-column-link">Método</a>
-                    <a href="#about" class="footer-column-link">Sobre</a>
-                    <a href="#booking" class="footer-column-link">Reservar</a>
-                </div>
-                <div class="footer-column">
-                    <span class="footer-column-title">— Contacto</span>
-                    <a href="mailto:hola@m.one" class="footer-column-link">hola@m.one
-                        <svg class="footer-link-arrow" width="10" height="10" viewBox="0 0 10 10" fill="none"><path d="M2 8L8 2M8 2H3.5M8 2V6.5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
-                    </a>
-                    <a href="#" class="footer-column-link">Instagram
-                        <svg class="footer-link-arrow" width="10" height="10" viewBox="0 0 10 10" fill="none"><path d="M2 8L8 2M8 2H3.5M8 2V6.5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
-                    </a>
-                    <a href="#" class="footer-column-link">LinkedIn
-                        <svg class="footer-link-arrow" width="10" height="10" viewBox="0 0 10 10" fill="none"><path d="M2 8L8 2M8 2H3.5M8 2V6.5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
-                    </a>
-                </div>
-            </div>
-            <div class="footer-bottom">
-                <span>© 2026 m.one — All rights reserved</span>
-                <span>Hecho con criterio</span>
+<section class="big-quote">
+    <div class="container">
+        <div class="big-quote-mark">"</div>
+        <p class="big-quote-text">Una marca clara <em>se nota.</em><br>Una marca estratégica <em>se convierte.</em></p>
+    </div>
+</section>
+
+<section class="booking" id="hablamos">
+    <div class="booking-left">
+        <div class="booking-content">
+            <div class="booking-eyebrow">— Hablamos</div>
+            <h2 class="booking-title">¿Tu marca<br>está dando todo<br>lo que <em>podría dar?</em></h2>
+            <p class="booking-sub">Una conversación honesta sobre tu marca, tu contexto y por dónde empezar. Sin pitch. Sin presión.</p>
+            <div class="booking-meta">
+                <span class="booking-meta-item">30 minutos</span>
+                <span class="booking-meta-item">Vía Google Meet</span>
+                <span class="booking-meta-item">Cero compromiso</span>
             </div>
         </div>
-    </footer>
+    </div>
+    <div class="booking-right">
+        <div class="booking-cta-card">
+            <span class="booking-cta-eyebrow">— Reserva tu hueco</span>
+            <h3 class="booking-cta-title">Elige el momento <em>que te encaje.</em></h3>
+            <p class="booking-cta-text">Calendario abierto. Eliges hueco. Recibes confirmación al instante con link de Google Meet.</p>
+            <button class="booking-btn" data-cal-namespace="llamada-inicial-30min" data-cal-link="m.one.studio/llamada-inicial-30min" data-cal-config='{"layout":"month_view"}'>Abrir calendario</button>
+            <ul class="booking-list">
+                <li class="booking-list-item">Sin formularios largos</li>
+                <li class="booking-list-item">Sin captación comercial</li>
+                <li class="booking-list-item">Sin compromiso posterior</li>
+            </ul>
+        </div>
+    </div>
+</section>
 
-    <!-- Cal.com embed -->
-    <script type="text/javascript">
-    (function (C, A, L) { let p = function (a, ar) { a.q.push(ar); }; let d = C.document; C.Cal = C.Cal || function () { let cal = C.Cal; let ar = arguments; if (!cal.loaded) { cal.ns = {}; cal.q = cal.q || []; d.head.appendChild(d.createElement("script")).src = A; cal.loaded = true; } if (ar[0] === L) { const api = function () { p(api, arguments); }; const namespace = ar[1]; api.q = api.q || []; if(typeof namespace === "string"){cal.ns[namespace] = cal.ns[namespace] || api;p(cal.ns[namespace], ar);p(cal, ["initNamespace", namespace]);} else p(cal, ar); return;} p(cal, ar); }; })(window, "https://app.cal.com/embed/embed.js", "init");
-    Cal("init", "llamada-inicial-30min", {origin:"https://cal.com"});
-    Cal.ns["llamada-inicial-30min"]("ui", {
-      "cssVarsPerTheme": {
-        "light": {
-          "cal-brand": "#B15B20",
-          "cal-text": "#1A1714",
-          "cal-text-emphasis": "#1A1714",
-          "cal-bg": "#F4EFE6",
-          "cal-bg-emphasis": "#EDE5D4",
-          "cal-border": "rgba(26, 23, 20, 0.15)",
-          "cal-border-subtle": "rgba(26, 23, 20, 0.08)",
-          "cal-border-emphasis": "rgba(26, 23, 20, 0.25)"
-        }
-      },
-      "hideEventTypeDetails": false,
-      "layout": "month_view"
-    });
-    </script>
+<footer class="footer">
+    <div class="container">
+        <div class="footer-grid">
+            <div>
+                <div class="footer-brand-logo"><img src="assets/m-one-logo.png" alt="m.one" style="filter:brightness(0) invert(1)"></div>
+                <p class="footer-tagline">Estrategia <em>primero.</em><br>Lo demás, después.</p>
+            </div>
+            <div class="footer-col">
+                <div class="footer-col-title">— Estudio</div>
+                <ul>
+                    <li><a href="#trabajo">Trabajo</a></li>
+                    <li><a href="#filosofia">Filosofía</a></li>
+                    <li><a href="#metodo">Método</a></li>
+                    <li><a href="#sobre">Sobre</a></li>
+                </ul>
+            </div>
+            <div class="footer-col">
+                <div class="footer-col-title">— Contenido</div>
+                <ul>
+                    <li><a href="#notas">Notas</a></li>
+                    <li><a href="https://instagram.com/m.one.studio" target="_blank" rel="noopener">Instagram</a></li>
+                    <li><a href="https://linkedin.com/company/m-one-studio" target="_blank" rel="noopener">LinkedIn</a></li>
+                </ul>
+            </div>
+            <div class="footer-col">
+                <div class="footer-col-title">— Contacto</div>
+                <ul>
+                    <li><a href="mailto:hello@m-one.studio">hello@m-one.studio</a></li>
+                    <li><a href="#hablamos">Reservar llamada</a></li>
+                </ul>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <span>© 2026 · m.one studio · Christian Martos</span>
+            <span class="footer-updated">Última actualización: 29 abril 2026</span>
+            <span>Made with criterio in <em style="color:var(--terracotta-light);font-weight:600">España</em></span>
+        </div>
+    </div>
+</footer>
 
-    <script>
-        // Scroll reveal animations
-        const observer = new IntersectionObserver((entries) => {
-            entries.forEach(entry => { if (entry.isIntersecting) { entry.target.style.opacity = '1'; entry.target.style.transform = 'translateY(0)'; } });
-        }, { threshold: 0.1, rootMargin: '0px 0px -50px 0px' });
-
-        document.querySelectorAll('.principle, .method-row, .about-visual, .about-content, .booking-split, .philosophy-intro, .method-intro, .booking-intro, .big-quote, .manifesto-quote').forEach(el => {
-            el.style.opacity = '0';
-            el.style.transform = 'translateY(24px)';
-            el.style.transition = 'opacity 0.9s cubic-bezier(0.16, 1, 0.3, 1), transform 0.9s cubic-bezier(0.16, 1, 0.3, 1)';
-            observer.observe(el);
-        });
-    </script>
 </body>
 </html>
